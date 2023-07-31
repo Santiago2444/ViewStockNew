@@ -1,0 +1,87 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+.product {
+    flex: 0 1 50px;
+}
+
+.gradient-color {
+    background: rgb(0,194,203);
+    background: linear-gradient(90deg, rgba(0,194,203,1) 0%, rgba(0,74,173,1) 50%, rgba(1,8,66,1) 100%);
+}
+
+.mw-100 {
+    max-width: 100%;
+}
+
+.mm-50 {
+    width: 500px;
+}
+
+.hh-50 {
+    height: 163px;
+}
+
+.medium-h-75 {
+    height: 500px;
+}
+
+.back-light {
+    background-color:lightgray;
+}
+
+.ml-3 {
+    margin-left:15px;
+}
+
+.bg-light-b {
+    background-color: #f3f3f3;
+}
+
+.hover-shadow:hover {
+    box-shadow: 60px -16px teal
+}
+
+
+.text-orange {
+    color:#ff6500
+}
+
+.btn-gradient {
+    background: rgb(0,194,203);
+    background: linear-gradient(90deg, rgba(0,194,203,1) 0%, rgba(0,74,173,1) 50%, rgba(1,8,66,1) 100%);
+}
+
+    .btn-gradient:hover {
+        background: rgb(0,194,203);
+        background: linear-gradient(90deg, rgba(0,194,203,1) 0%, rgba(0,74,173,1) 100%, rgba(1,8,66,1) 100%);
+    }
+    
+
+.product-card{
+
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+} 
+
+    

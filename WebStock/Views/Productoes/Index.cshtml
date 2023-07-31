@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WebStock.Models.Producto>
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@using Microsoft.EntityFrameworkCore;
+@using WebStock.Data;
+@using WebStock.Models;
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-flex p-2 mw-100 rounded-3 mt-5 mb-4 justify-content-center align-content-center" style="background-color:#262626">
+    <img src="/img/ProductosBann.png" class="mx-2" height="104" width="499" alt="...">
+</div>
+<div class="bg-white shadow-sm rounded-3 mw-100 p-2 mb-2">
+    <div class="row d-flex align-items-center">
+        <div class="col-8 d-flex align-items-center mw-100">
+            <form asp-action="Index">
+                <div class="input-group mw-100">
+                    <div class="form-outline">
+                        <input type="search" class="form-control" style="border-radius: 83px 0px 0px 83px;" name="txtBusqueda" id="txtBusqueda" placeholder="Buscar..." />
+                    </div>
+                    <button type="submit" value="Buscar" class="btn btn-primary px-3" style="border-radius: 0px 83px 83px 0px;">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>               
+            </form>
+            <div class="d-flex justify-content-between align-content-between">
+                <a asp-action="Create" class="btn btn-success mx-2 not-active">
+                    <i class="bi bi-plus-circle-fill fa-lg"></i>
+                </a>       
+            </div>
+        </div>       
+    </div>
+</div>
+
+@*<p>
+    <a asp-action="Create" type="button" class="btn btn-outline-warning mx-1">
+        <i class="bi bi-funnel-fill"></i>
+    </a>
+    
+</p>*@
+
+
+<div class="bg-white p-5 shadow rounded-3">
+
+    <div class="row row-cols-2 d-flex justify-content-start">
+
+        @foreach (var item in Model)
+        {
+            string imreBase64Data = Convert.ToBase64String(item.Imagen);
+            string imgDataURL = string.Format("data:image/png;base64,{0}", imreBase64Data);
+            // Se manda 
+            ViewBag.ImagenProducto = imgDataURL;
+            //
+            <div class="col my-3">
+
+                <div class="border border-1 rounded shadow mm-50 hh-50 px-3 product-card" style="">
+                   <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="container p-2 bg-light-b my-2 rounded">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class ="col-8" style="margin-left:5px">
+                                            <h5 class="card-title mt-1">@Html.DisplayFor(modelItem => item.Marca.Nombre)</h5>
+                                        </div>
+                                        <div class="col">
+                                            <h5 class="card-title mt-1">@Html.DisplayFor(modelItem => item.SPEC.Nombre)</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container p-2 bg-light-b my-2 rounded">
+                                    <div class="row row-cols-3 d-flex justify-content-center align-items-center gap-2">
+                                        <div class="col-6">
+                                        <p class="card-text">@Html.DisplayFor(modelItem => item.Detalles)</p>
+                                        </div>
+                                        <div class="col d-flex" style="margin-right:26px">
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-1 not-active">
+                                                <i class="bi bi-pencil-square fa-lg"></i>
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-1">
+                                                <i class="bi bi-trash3 fa-lg"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+
+                                <div class="container p-1 my-1 rounded">
+                                    <img src="@ViewBag.ImagenProducto" class="rounded-3" height="110" width="110" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,338 @@
+﻿@model WebStock.Models.Producto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="flex-column h-auto p-2 mw-100 rounded-3 mt-5 mb-4 justify-content-center align-content-center" style="background-color:#262626">
+    <div class="col d-flex justify-content-center align-items-center mt-5 mb-5">
+            <img src="~/img/DeleteTittle.png" width="500" height="110" />
+        </div>
+    <div class="row row-cols-2 mt-2 mb-5">
+        <div class="col-6 d-flex justify-content-center align-items-center">
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger d-flex px-3">
+                    <span style="font-family:'Lucida Sans'" class="h3 mt-2">
+                        Eliminar
+                    </span>
+                    <i class="bi bi-trash3 mx-2 fa-2x"></i>
+                </button>
+            </form>
+
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+            <a class=" btn-gradient shadow d-flex rounded h-auto w-auto justify-content-center align-items-center py-2 px-3" style="font-family:'Lucida Sans'; text-decoration:none" asp-action="Index">
+                <span class="h3 mt-2 text-white fw-bold" style="font-family:'Lucida Sans'; text-decoration:none">
+                    Volver
+                </span>
+                <i class="bi bi-backspace text-white fa-2x mx-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white p-4 rounded-3">
+    @**@
+    <div class="mb-2">
+        <div class="flex-column" style="margin-right:50px">
+            <div class="col-8">
+                <img src="/img/View (1).png" class="" height="64" width="499" alt="...">
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="row row-cols-3 mw-100">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Tipo de Producto</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.TipoProducto.Nombre)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Marca</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Marca.Nombre)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Detalles</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Detalles)" disabled>
+            </div>
+        </div>
+        @**@
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Especificación</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.SPEC.Nombre)" disabled>
+            </div>
+        </div>
+        @**@
+        <div class="col-4">
+@*            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-1 fw-bold" style="font-family:'Lucida Sans'">Detalles</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Detalles)" disabled>
+            </div>
+*@        </div>
+        @**@
+        <div class="col-4">
+@*            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-1 fw-bold" style="font-family:'Lucida Sans'">Detalles</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Detalles)" disabled>
+            </div>
+*@      </div>
+    </div>
+    <hr class="hr mb-3" />
+    @**@
+    <div class="mb-2">
+        <div class="flex-column" style="margin-right:50px">
+            <div class="col-8">
+                <img src="/img/UnidadTittle.png" class="" height="64" width="499" alt="...">
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="row row-cols-3 mw-100">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Ganancia</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Ganancia)%" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Precio Unidad</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="$@Html.DisplayFor(model => model.PrecioUnidad)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Precio de Venta</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="$@Html.DisplayFor(model => model.PVP)" disabled>
+            </div>
+        </div>
+    </div>
+    <hr class="hr mb-3"/>
+    @**@
+    <div class="mb-2">
+        <div class="flex-column" style="margin-right:50px">
+            <div class="col-8">
+                <img src="/img/BultoTitlte.png" class="" height="64" width="499" alt="...">
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="row row-cols-3 mw-100">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Descuento</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Descuento)%" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Cant. por Bulto</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.CantidadBulto)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Precio de Bulto</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="$@Html.DisplayFor(model => model.PrecioBulto)" disabled>
+            </div>
+        </div>
+    </div>
+    <hr class="hr mb-3" />
+    @**@
+    <div class="mb-2">
+        <div class="flex-column" style="margin-right:50px">
+            <div class="col-8">
+                <img src="/img/OtrosTitlte.png" class="" height="64" width="499" alt="...">
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="row row-cols-3 mw-100">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Proveedor</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Proveedor.Nombre)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Stock</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Stock)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Modificación</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Modificacion)" disabled>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="mb-2 fw-bold" style="font-family:'Lucida Sans'; margin-left:5px">Usuario</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="@Html.DisplayFor(model => model.Usuario.Nombre)" disabled>
+            </div>
+        </div>
+    </div>
+    <hr class="hr mb-3" />
+    @**@
+    <div class="mb-2">
+        <div class="flex-column" style="margin-right:50px">
+            <div class="col-8">
+                <img src="/img/ImageTitlte.png" class="" height="64" width="499" alt="...">
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="row row-cols-3 mw-100 mb-3">
+        <div class="col-4 mb-3">
+            <img src="@ViewBag.ImageData" class="rounded-3 shadow" height="200" width="200" alt="...">
+        </div>
+    </div>
+    <hr class="hr mb-3" />
+    @**@
+    <div class="row row-cols-2 mt-5 mb-3">
+        <div class="col-6 d-flex justify-content-center align-items-center" >
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger d-flex px-3">
+                    <span style="font-family:'Lucida Sans'" class="h4 mt-2">
+                        Eliminar
+                    </span>
+                    <i class="bi bi-trash3 mx-2 fa-2x"></i>
+                </button>
+            </form>
+
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center" >
+            <a class=" btn-gradient shadow d-flex rounded h-auto w-auto justify-content-center align-items-center py-2 px-3" style="font-family:'Lucida Sans'; text-decoration:none" asp-action="Index">
+                <span class="h4 mt-2 text-white fw-bold" style="font-family:'Lucida Sans'; text-decoration:none">
+                    Volver
+                </span>
+                <i class="bi bi-backspace text-white fa-2x mx-2"></i>
+            </a>
+        </div>
+    </div>
+    @*<h4>Producto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoProducto.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Marca.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Detalles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Detalles)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SPEC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SPEC.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descuento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descuento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioBulto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioBulto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadBulto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadBulto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioUnidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioUnidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ganancia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ganancia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PVP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PVP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Proveedor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Proveedor.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Visible)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Visible)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Modificacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Modificacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuario.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Carrito)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Carrito)
+        </dd>
+    </dl>
+    
+   
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>*@
+
+</div>

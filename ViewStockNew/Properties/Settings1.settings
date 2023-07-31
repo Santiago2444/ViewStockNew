@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ViewStockNew.Properties" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">bvpghk30tjjalsdr4eel-mysql.services.clever-cloud.com</Value>
+    </Setting>
+    <Setting Name="database" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bvpghk30tjjalsdr4eel</Value>
+    </Setting>
+    <Setting Name="user" Type="System.String" Scope="User">
+      <Value Profile="(Default)">uuszol3ba4e9gp4s</Value>
+    </Setting>
+    <Setting Name="pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QYy2Uh4gTCyrWe5TsbBm</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
