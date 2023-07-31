@@ -40,9 +40,8 @@ namespace ViewStockNew.ViewReport
             CargarReporteAsync();
         }
 
-        private void CargarReporteAsync()
+        private async Task CargarReporteAsync()
         {
-            //GridDatos.DataSource = this.remitosDetalles;
             reporte.LocalReport.ReportEmbeddedResource = "ViewStockNew.Reports.RptComprobante.rdlc";
             var comprobanteImprimir = from RemitoDetalle remitoDetalle in this.remitosDetalles
                                       select  new
@@ -63,6 +62,7 @@ namespace ViewStockNew.ViewReport
                                           TipoComprobante = remitoDetalle.Remito.TipoComprobante,
                                           CantidadTotal = remitoDetalle.Remito.CantidadProductos,
                                           Bulto = remitoDetalle.bulto,
+                                          Usuario = remitoDetalle.Remito.Usuario
                                       };
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSComprobante", comprobanteImprimir.ToList()));
             reporte.RefreshReport();

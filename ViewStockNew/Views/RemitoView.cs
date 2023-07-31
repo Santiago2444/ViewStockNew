@@ -984,7 +984,7 @@ namespace ViewStockNew.Views
 
         private async void BtnImprimir_Click(object sender, EventArgs e)
         {
-            remitosDetalles.DataSource = await unitOfWork.RemitoDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Remito).Include(q => q.Remito.Proveedor), filter: q => q.RemitoId.Equals(ClasesCompartidas.RemitoId));
+            remitosDetalles.DataSource = await unitOfWork.RemitoDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Remito).Include(q => q.Remito.Proveedor).Include(q => q.Remito.Usuario), filter: q => q.RemitoId.Equals(ClasesCompartidas.RemitoId));
             //remitosDetalles = (IEnumerable<RemitoDetalle>)unitOfWork.RemitoDetalleRepository.GetByID(1);
             ComprobanteViewReport comprobanteViewReport = new ComprobanteViewReport(this.remitosDetalles);
             comprobanteViewReport.ShowDialog();

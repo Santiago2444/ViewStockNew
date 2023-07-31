@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewStockNew.Interfaces;
 using ViewStockNew.Models;
+using ViewStockNew.ViewReport;
 
 namespace ViewStockNew.Views
 {
@@ -18,6 +19,7 @@ namespace ViewStockNew.Views
     {
         IUnitOfWork unitOfWork;
         private int IdCuenta;
+        BindingSource comprobantePago = new BindingSource();
         //
         #region BindingSource's
 
@@ -1323,6 +1325,14 @@ namespace ViewStockNew.Views
             miniLoading.ShowDialog();
             //
             GridProductos.DataSource = ClasesCompartidas.CompraSelected;
+        }
+
+        private async void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            comprobantePago.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta).Include(q => q.Venta).Include(q => q.Venta.Pago), filter: q => q.Pagado == "Si" && q.Venta.PagoId.Equals(ClasesCompartidas.PagoId));
+            //
+            ComprobantePagoViewReport comprobantePagoViewReport = new ComprobantePagoViewReport(comprobantePago);
+            comprobantePagoViewReport.ShowDialog();
         }
     }
 }

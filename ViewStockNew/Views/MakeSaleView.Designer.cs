@@ -34,8 +34,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
             pictureBox2 = new PictureBox();
             tabControl1 = new TabControl();
             TabProductsSale = new TabPage();
@@ -57,7 +55,6 @@
             LblNombreUser = new Label();
             iconButton16 = new FontAwesome.Sharp.IconButton();
             iconButton15 = new FontAwesome.Sharp.IconButton();
-            BtnContinuar = new FontAwesome.Sharp.IconButton();
             BtnGuardarVenta = new FontAwesome.Sharp.IconButton();
             BtnCancelar = new FontAwesome.Sharp.IconButton();
             BtnGuardarDeuda = new FontAwesome.Sharp.IconButton();
@@ -103,9 +100,6 @@
             BtnTerminarVenta = new FontAwesome.Sharp.IconButton();
             RadioBulto = new RadioButton();
             RadioUnidad = new RadioButton();
-            BtnImprimir = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
             TabProductsSale.SuspendLayout();
@@ -124,32 +118,14 @@
             ((System.ComponentModel.ISupportInitialize)NumCantidad).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = Properties.Resources.OrangeDivider;
-            pictureBox4.Location = new Point(29, 105);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(694, 10);
-            pictureBox4.TabIndex = 89;
-            pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.Image = Properties.Resources.OrangeDivider;
-            pictureBox5.Location = new Point(560, 105);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(717, 10);
-            pictureBox5.TabIndex = 90;
-            pictureBox5.TabStop = false;
-            // 
             // pictureBox2
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.Image = Properties.Resources.ViewStockTittle;
-            pictureBox2.Location = new Point(29, 12);
+            pictureBox2.Location = new Point(30, 23);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(501, 96);
+            pictureBox2.Size = new Size(510, 92);
             pictureBox2.TabIndex = 88;
             pictureBox2.TabStop = false;
             // 
@@ -162,7 +138,7 @@
             tabControl1.Location = new Point(31, 209);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(774, 515);
+            tabControl1.Size = new Size(774, 462);
             tabControl1.TabIndex = 91;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -174,7 +150,7 @@
             TabProductsSale.Location = new Point(4, 29);
             TabProductsSale.Name = "TabProductsSale";
             TabProductsSale.Padding = new Padding(3);
-            TabProductsSale.Size = new Size(766, 482);
+            TabProductsSale.Size = new Size(766, 429);
             TabProductsSale.TabIndex = 0;
             TabProductsSale.Text = "Productos";
             // 
@@ -216,7 +192,7 @@
             GridProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             GridProductos.RowTemplate.Height = 25;
             GridProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            GridProductos.Size = new Size(754, 473);
+            GridProductos.Size = new Size(754, 417);
             GridProductos.TabIndex = 26;
             GridProductos.CellClick += GridProductos_CellClick;
             GridProductos.CellContextMenuStripNeeded += GridProductos_CellContextMenuStripNeeded;
@@ -445,26 +421,6 @@
             iconButton15.Size = new Size(35, 28);
             iconButton15.TabIndex = 160;
             iconButton15.UseVisualStyleBackColor = false;
-            // 
-            // BtnContinuar
-            // 
-            BtnContinuar.BackColor = Color.DarkOrange;
-            BtnContinuar.Cursor = Cursors.Hand;
-            BtnContinuar.FlatAppearance.BorderSize = 0;
-            BtnContinuar.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
-            BtnContinuar.FlatAppearance.MouseOverBackColor = Color.Gold;
-            BtnContinuar.FlatStyle = FlatStyle.Flat;
-            BtnContinuar.ForeColor = SystemColors.ActiveCaptionText;
-            BtnContinuar.IconChar = FontAwesome.Sharp.IconChar.CircleArrowRight;
-            BtnContinuar.IconColor = Color.Black;
-            BtnContinuar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnContinuar.IconSize = 35;
-            BtnContinuar.Location = new Point(1213, 684);
-            BtnContinuar.Name = "BtnContinuar";
-            BtnContinuar.Size = new Size(64, 40);
-            BtnContinuar.TabIndex = 159;
-            BtnContinuar.UseVisualStyleBackColor = false;
-            BtnContinuar.Click += BtnContinuar_Click;
             // 
             // BtnGuardarVenta
             // 
@@ -1254,33 +1210,12 @@
             RadioUnidad.UseVisualStyleBackColor = false;
             RadioUnidad.CheckedChanged += radioButton2_CheckedChanged;
             // 
-            // BtnImprimir
-            // 
-            BtnImprimir.BackColor = Color.DarkOrange;
-            BtnImprimir.Cursor = Cursors.Hand;
-            BtnImprimir.FlatAppearance.BorderSize = 0;
-            BtnImprimir.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
-            BtnImprimir.FlatAppearance.MouseOverBackColor = Color.Gold;
-            BtnImprimir.FlatStyle = FlatStyle.Flat;
-            BtnImprimir.ForeColor = SystemColors.ActiveCaptionText;
-            BtnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            BtnImprimir.IconColor = Color.Black;
-            BtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnImprimir.IconSize = 30;
-            BtnImprimir.Location = new Point(688, 134);
-            BtnImprimir.Name = "BtnImprimir";
-            BtnImprimir.Size = new Size(35, 27);
-            BtnImprimir.TabIndex = 198;
-            BtnImprimir.UseVisualStyleBackColor = false;
-            BtnImprimir.Click += BtnImprimir_Click;
-            // 
             // MakeSaleView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 38, 38);
-            ClientSize = new Size(1324, 736);
-            Controls.Add(BtnImprimir);
+            ClientSize = new Size(1324, 685);
             Controls.Add(RadioUnidad);
             Controls.Add(RadioBulto);
             Controls.Add(BtnTerminarVenta);
@@ -1301,7 +1236,6 @@
             Controls.Add(BtnRealizarOtraVenta);
             Controls.Add(iconButton16);
             Controls.Add(iconButton15);
-            Controls.Add(BtnContinuar);
             Controls.Add(BtnGuardarVenta);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnGuardarDeuda);
@@ -1338,8 +1272,6 @@
             Controls.Add(pictureBox6);
             Controls.Add(PctProducto);
             Controls.Add(tabControl1);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox5);
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
@@ -1348,8 +1280,6 @@
             Text = "MakeSaleView";
             Activated += MakeSaleView_Activated;
             Load += MakeSaleView_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tabControl1.ResumeLayout(false);
             TabProductsSale.ResumeLayout(false);
@@ -1372,9 +1302,6 @@
         }
 
         #endregion
-
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
         private PictureBox pictureBox2;
         private TabControl tabControl1;
         private TabPage TabProductsSale;
@@ -1390,7 +1317,6 @@
         private Label LblNombreUser;
         private FontAwesome.Sharp.IconButton iconButton16;
         private FontAwesome.Sharp.IconButton iconButton15;
-        private FontAwesome.Sharp.IconButton BtnContinuar;
         private FontAwesome.Sharp.IconButton BtnGuardarVenta;
         private FontAwesome.Sharp.IconButton BtnCancelar;
         private FontAwesome.Sharp.IconButton BtnGuardarDeuda;
@@ -1442,6 +1368,5 @@
         private FontAwesome.Sharp.IconButton BtnTerminarVenta;
         private RadioButton RadioBulto;
         private RadioButton RadioUnidad;
-        private FontAwesome.Sharp.IconButton BtnImprimir;
     }
 }

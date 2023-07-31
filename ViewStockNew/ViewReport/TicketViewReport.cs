@@ -14,7 +14,7 @@ namespace ViewStockNew.ViewReport
 {
     public partial class TicketViewReport : Form
     {
-        private IEnumerable<VentaDetalle> ventas;
+        BindingSource ticket = new BindingSource();
         ReportViewer reporte = new ReportViewer();
         private decimal pvp;
         public TicketViewReport()
@@ -22,10 +22,10 @@ namespace ViewStockNew.ViewReport
             InitializeComponent();
         }
 
-        public TicketViewReport(IEnumerable<VentaDetalle> ventas)
+        public TicketViewReport(BindingSource ticket)
         {
             InitializeComponent();
-            this.ventas = ventas;
+            this.ticket.DataSource = ticket;            
             //
             reporte.Dock = DockStyle.Fill;
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
@@ -42,8 +42,8 @@ namespace ViewStockNew.ViewReport
         private async Task CargarReporteAsync()
         {
             reporte.LocalReport.ReportEmbeddedResource = "ViewStockNew.Reports.RptTicket.rdlc";
-            var ticketImprimir = from VentaDetalle ventaDetalle in this.ventas
-                                    select new
+            var ticketImprimir = from VentaDetalle ventaDetalle in this.ticket
+                                 select new
                                     {
                                         TipoProducto = ventaDetalle.TipoProducto.Nombre,
                                         Marca = ventaDetalle.Marca.Nombre,
@@ -52,13 +52,14 @@ namespace ViewStockNew.ViewReport
                                         Bulto = ventaDetalle.Bulto,
                                         CantidadBultos = ventaDetalle.CantidadBultos,
                                         CantidadXBultos = ventaDetalle.CantidadXBultos,
-                                        PrecioBulto = ventaDetalle.PrecioBulto.ToString("0.00"),
-                                        PVP = ventaDetalle.PVP.ToString("0.00"),
+                                        PrecioBulto = "$"+ventaDetalle.PrecioBulto.ToString("0.00"),
+                                        PVP = "$"+ventaDetalle.PVP.ToString("0.00"),
                                         Cantidad = ventaDetalle.Cantidad,
                                         FechaDePago = ventaDetalle.FechaDePago,
                                         CodigoDeVenta = ventaDetalle.CodigoDeVenta,
-                                        Importe = ventaDetalle.Venta.Importe,
-                                        CantidadTotal = ventaDetalle.Venta.Articulos
+                                        Importe = "$"+ventaDetalle.Venta.Importe.ToString("0.00"),
+                                        CantidadTotal = ventaDetalle.Venta.Articulos,
+                                        Usuario = ventaDetalle.Usuario.Nombre,
                                     };
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSTicket", ticketImprimir.ToList()));
             reporte.RefreshReport();

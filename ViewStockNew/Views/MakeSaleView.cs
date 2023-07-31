@@ -23,7 +23,7 @@ namespace ViewStockNew.Views
     {
         IUnitOfWork unitOfWork;
         BindingSource Filter = new BindingSource();
-        IEnumerable<VentaDetalle> ventas;
+        BindingSource ticket = new BindingSource();
         //
         private decimal PrecioAcumulado;
         private int CantidadCarrito;
@@ -1106,9 +1106,9 @@ namespace ViewStockNew.Views
 
         private async void BtnRealizarOtraVenta_Click(object sender, EventArgs e)
         {
-            ventas = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta), filter: q => q.Pagado == "Si" && q.CodigoDeVenta.Equals(ClasesCompartidas.CodigoDeVenta));
+            ticket.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta).Include(q => q.Venta), filter: q => q.Pagado == "Si" && q.CodigoDeVenta.Equals(ClasesCompartidas.CodigoDeVenta));
             //
-            TicketViewReport ticketViewReport = new TicketViewReport(ventas);
+            TicketViewReport ticketViewReport = new TicketViewReport(ticket);
             ticketViewReport.ShowDialog();
         }
 

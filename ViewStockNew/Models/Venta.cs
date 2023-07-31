@@ -22,7 +22,8 @@ namespace ViewStockNew.Models
         public int Codigo { get; set; }
         public int? UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
-        public string PagoId { get; set; }
+        public int? PagoId { get; set; }
+        public Pago Pago { get; set; }
         public override string ToString()
         {
             return base.ToString();

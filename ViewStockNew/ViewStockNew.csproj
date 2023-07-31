@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Data\ViewStockDataSet.xsd" />
     <None Remove="Reports\RptComprobante.rdlc" />
+    <None Remove="Reports\RptComprobantePago.rdlc" />
     <None Remove="Reports\RptCuentas.rdlc" />
     <None Remove="Reports\RptProductos.rdlc" />
     <None Remove="Reports\RptProveedores.rdlc" />
@@ -26,6 +27,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptComprobante.rdlc" />
+    <EmbeddedResource Include="Reports\RptComprobantePago.rdlc" />
     <EmbeddedResource Include="Reports\RptCuentas.rdlc" />
     <EmbeddedResource Include="Reports\RptProductos.rdlc">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -33,6 +33,8 @@ namespace ViewStockNew.Models
 
         public static int? RemitoId = null;
 
+        public static int? PagoId = null;
+
         // Listas de datos habilitados y otras cosas importantes
         public static BindingSource marcasList = new BindingSource();
 

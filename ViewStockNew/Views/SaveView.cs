@@ -137,7 +137,7 @@ namespace ViewStockNew.Views
                 Fecha = DateTime.Now,
                 Codigo = _codigoVenta,
                 UsuarioId = ClasesCompartidas.UserId,
-                PagoId = "PagadoCaja"
+                PagoId = null
             };
             try
             {
@@ -171,7 +171,7 @@ namespace ViewStockNew.Views
                     ventaDetalle.CodigoDeVenta = _codigoVenta;
                     ventaDetalle.FechaDePago = DateTime.Now;
                     ventaDetalle.CuentaId = cuentaId;
-                    ventaDetalle.VentaId = ventaDetalle.VentaId;
+                    ventaDetalle.VentaId = VentaId;
                     //
                     try
                     {
@@ -641,7 +641,8 @@ namespace ViewStockNew.Views
                 MessageBox.Show(ex.Message);
             }
             //
-            var pagoid = Convert.ToString(pago.Id);
+            var pagoid = pago.Id;
+            ClasesCompartidas.PagoId = pago.Id;
             //
             var deudaPagada = unitOfWork.VentaRepository.GetByID(iddeuda);
             deudaPagada.Estado = "Pagado";
@@ -766,7 +767,8 @@ namespace ViewStockNew.Views
                 MessageBox.Show(ex.Message);
             }
             //
-            var pagoid = Convert.ToString(pago.Id);
+            var pagoid = pago.Id;
+            ClasesCompartidas.PagoId = pago.Id;
             //
             foreach (Venta deuda in comprasDeudas)
             {
@@ -877,6 +879,8 @@ namespace ViewStockNew.Views
                 Debug.Print(ex.InnerException?.Message);
                 MessageBox.Show(ex.Message);
             }
+            ClasesCompartidas.PagoId = pago.Id;
+            //
             ClasesCompartidas.PagosList.DataSource = await unitOfWork.PagoRepository.GetAllAsync(include: q => q.Include(q => q.Cuenta).Include(q => q.Usuario), filter: q => q.CuentaId.Equals(cuentaId));
             ClasesCompartidas.cuentasList.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(true));
             //
@@ -933,7 +937,8 @@ namespace ViewStockNew.Views
                 MessageBox.Show(ex.Message);
             }
             //
-            var pagoid = Convert.ToString(pago.Id);
+            var pagoid = pago.Id;
+            ClasesCompartidas.PagoId = pago.Id;
             //
             foreach (Venta venta in comprasDeudas)
             {
@@ -1069,7 +1074,7 @@ namespace ViewStockNew.Views
                 Fecha = DateTime.Now,
                 Codigo = _codigoVenta,
                 UsuarioId = ClasesCompartidas.UserId,
-                PagoId = "Deuda"
+                PagoId = null
             };
             try
             {
