@@ -83,8 +83,6 @@
             ComboProveedor = new ComboBox();
             CheckVentasFilter = new CheckBox();
             CheckProductosFilter = new CheckBox();
-            pictureBox6 = new PictureBox();
-            label8 = new Label();
             pictureBox10 = new PictureBox();
             pictureBox7 = new PictureBox();
             pictureBox13 = new PictureBox();
@@ -100,7 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
@@ -755,26 +752,6 @@
             CheckProductosFilter.UseVisualStyleBackColor = true;
             CheckProductosFilter.CheckedChanged += CheckProductosFilter_CheckedChanged;
             // 
-            // pictureBox6
-            // 
-            pictureBox6.Image = Properties.Resources.OrangeDivider;
-            pictureBox6.Location = new Point(966, 433);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(308, 10);
-            pictureBox6.TabIndex = 256;
-            pictureBox6.TabStop = false;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Lucida Sans", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.Gold;
-            label8.Location = new Point(962, 408);
-            label8.Name = "label8";
-            label8.Size = new Size(152, 22);
-            label8.TabIndex = 257;
-            label8.Text = "Herramientas ";
-            // 
             // pictureBox10
             // 
             pictureBox10.Image = Properties.Resources.OrangeDivider;
@@ -809,8 +786,6 @@
             BackColor = Color.FromArgb(38, 38, 38);
             ClientSize = new Size(1300, 745);
             Controls.Add(pictureBox7);
-            Controls.Add(label8);
-            Controls.Add(pictureBox6);
             Controls.Add(CheckProductosFilter);
             Controls.Add(CheckVentasFilter);
             Controls.Add(label12);
@@ -881,7 +856,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
@@ -939,8 +913,6 @@
         private ComboBox ComboProveedor;
         private CheckBox CheckVentasFilter;
         private CheckBox CheckProductosFilter;
-        private PictureBox pictureBox6;
-        private Label label8;
         private PictureBox pictureBox10;
         private PictureBox pictureBox7;
         private PictureBox pictureBox13;

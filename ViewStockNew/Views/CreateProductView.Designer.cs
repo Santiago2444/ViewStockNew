@@ -30,7 +30,6 @@
         {
             pictureBox10 = new PictureBox();
             LblTitle = new Label();
-            IcoBtnInfo = new FontAwesome.Sharp.IconButton();
             pictureBox4 = new PictureBox();
             label9 = new Label();
             TxtDetalles = new RichTextBox();
@@ -74,8 +73,6 @@
             BtnAgregarMarca = new FontAwesome.Sharp.IconButton();
             BtnAgregarTipo = new FontAwesome.Sharp.IconButton();
             label2 = new Label();
-            BtnRefresh = new FontAwesome.Sharp.IconButton();
-            CboTraerDatos = new ComboBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             pictureBox2 = new PictureBox();
             TxtDescuento = new TextBox();
@@ -110,25 +107,6 @@
             LblTitle.Size = new Size(229, 28);
             LblTitle.TabIndex = 75;
             LblTitle.Text = "Creando Producto";
-            // 
-            // IcoBtnInfo
-            // 
-            IcoBtnInfo.BackColor = Color.Transparent;
-            IcoBtnInfo.Cursor = Cursors.Hand;
-            IcoBtnInfo.FlatAppearance.BorderSize = 0;
-            IcoBtnInfo.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            IcoBtnInfo.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            IcoBtnInfo.FlatStyle = FlatStyle.Flat;
-            IcoBtnInfo.ForeColor = SystemColors.ActiveCaptionText;
-            IcoBtnInfo.IconChar = FontAwesome.Sharp.IconChar.Info;
-            IcoBtnInfo.IconColor = SystemColors.ButtonFace;
-            IcoBtnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            IcoBtnInfo.IconSize = 22;
-            IcoBtnInfo.Location = new Point(665, 32);
-            IcoBtnInfo.Name = "IcoBtnInfo";
-            IcoBtnInfo.Size = new Size(35, 28);
-            IcoBtnInfo.TabIndex = 102;
-            IcoBtnInfo.UseVisualStyleBackColor = false;
             // 
             // pictureBox4
             // 
@@ -722,39 +700,6 @@
             label2.TabIndex = 133;
             label2.Text = "Acciones";
             // 
-            // BtnRefresh
-            // 
-            BtnRefresh.BackColor = Color.DarkOrange;
-            BtnRefresh.Cursor = Cursors.Hand;
-            BtnRefresh.FlatAppearance.BorderSize = 0;
-            BtnRefresh.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
-            BtnRefresh.FlatAppearance.MouseOverBackColor = Color.Gold;
-            BtnRefresh.FlatStyle = FlatStyle.Flat;
-            BtnRefresh.ForeColor = SystemColors.ActiveCaptionText;
-            BtnRefresh.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            BtnRefresh.IconColor = Color.Black;
-            BtnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnRefresh.IconSize = 30;
-            BtnRefresh.Location = new Point(664, 505);
-            BtnRefresh.Name = "BtnRefresh";
-            BtnRefresh.Size = new Size(35, 28);
-            BtnRefresh.TabIndex = 135;
-            BtnRefresh.UseVisualStyleBackColor = false;
-            BtnRefresh.Click += BtnRefresh_Click;
-            // 
-            // CboTraerDatos
-            // 
-            CboTraerDatos.BackColor = Color.FromArgb(55, 55, 55);
-            CboTraerDatos.Cursor = Cursors.Hand;
-            CboTraerDatos.FlatStyle = FlatStyle.Flat;
-            CboTraerDatos.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            CboTraerDatos.ForeColor = SystemColors.ButtonFace;
-            CboTraerDatos.FormattingEnabled = true;
-            CboTraerDatos.Location = new Point(453, 506);
-            CboTraerDatos.Name = "CboTraerDatos";
-            CboTraerDatos.Size = new Size(208, 26);
-            CboTraerDatos.TabIndex = 134;
-            // 
             // iconButton1
             // 
             iconButton1.BackColor = Color.DarkOrange;
@@ -844,8 +789,6 @@
             Controls.Add(label7);
             Controls.Add(pictureBox2);
             Controls.Add(iconButton1);
-            Controls.Add(BtnRefresh);
-            Controls.Add(CboTraerDatos);
             Controls.Add(label2);
             Controls.Add(BtnGuardar);
             Controls.Add(BtnCancelar);
@@ -867,7 +810,6 @@
             Controls.Add(label13);
             Controls.Add(BtnEliminarImagen);
             Controls.Add(BtnSubirImagen);
-            Controls.Add(IcoBtnInfo);
             Controls.Add(pictureBox4);
             Controls.Add(label9);
             Controls.Add(TxtDetalles);
@@ -908,7 +850,6 @@
 
         private PictureBox pictureBox10;
         private Label LblTitle;
-        private FontAwesome.Sharp.IconButton IcoBtnInfo;
         private PictureBox pictureBox4;
         private Label label9;
         private RichTextBox TxtDetalles;
@@ -952,8 +893,6 @@
         private FontAwesome.Sharp.IconButton BtnAgregarMarca;
         private FontAwesome.Sharp.IconButton BtnAgregarTipo;
         private Label label2;
-        private FontAwesome.Sharp.IconButton BtnRefresh;
-        private ComboBox CboTraerDatos;
         private FontAwesome.Sharp.IconButton iconButton1;
         private PictureBox pictureBox2;
         private TextBox TxtDescuento;

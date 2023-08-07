@@ -27,6 +27,7 @@ namespace ViewStockNew.Views
         private int IdCuentaModify;
         private string _Nombre;
         private string _DNI;
+        private bool? makesale = null;
 
         public CreateAccount(IUnitOfWork unitOfWork, bool Editando)
         {
@@ -98,6 +99,32 @@ namespace ViewStockNew.Views
             _DNI = cuentaEdit.DNI;
         }
 
+        public CreateAccount(IUnitOfWork unitOfWork, bool Editando, bool makesale) : this(unitOfWork, Editando)
+        {
+            InitializeComponent();
+            this.unitOfWork = unitOfWork;
+            this.editando = Editando;
+            this.makesale = makesale;
+            //
+            CargarComboProvincia();
+            CargarComboLocalidad();
+            //
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.BtnGuardar, "Guardar");
+            //
+            System.Windows.Forms.ToolTip ToolTip2 = new System.Windows.Forms.ToolTip();
+            ToolTip2.SetToolTip(this.BtnCancelar, "Cancelar");
+            //
+            System.Windows.Forms.ToolTip ToolTip3 = new System.Windows.Forms.ToolTip();
+            ToolTip3.SetToolTip(this.BtnContinuar, "Continuar");
+            //
+            System.Windows.Forms.ToolTip ToolTip4 = new System.Windows.Forms.ToolTip();
+            ToolTip4.SetToolTip(this.BtnAgregarLocalidad, "Agregar nueva Localidad");
+            //
+            System.Windows.Forms.ToolTip ToolTip5 = new System.Windows.Forms.ToolTip();
+            ToolTip5.SetToolTip(this.BtnAgregarProvincia, "Agregar nueva Provincia");
+        }
+
         private void CargarComboProvincia(int? provinciaId = 0)
         {
             ComboProvincia.DisplayMember = "Nombre";
@@ -106,7 +133,14 @@ namespace ViewStockNew.Views
             //
             if (provinciaId != 0)
             {
-                ComboProvincia.SelectedValue = provinciaId;
+                if (provinciaId == null)
+                {
+                    ComboProvincia.SelectedValue = 0;
+                }
+                else
+                {
+                    ComboProvincia.SelectedValue = provinciaId;
+                }
             }
             else
                 ComboProvincia.SelectedValue = 0;
@@ -128,10 +162,16 @@ namespace ViewStockNew.Views
             //
             if (localidadId != 0)
             {
-                ComboLocalidad.SelectedValue = localidadId;
+                if (localidadId == null)
+                {
+                    ComboLocalidad.SelectedValue = 0;
+                }
+                else
+                {
+                    ComboLocalidad.SelectedValue = localidadId;
+                }
             }
             else
-                ComboLocalidad.SelectedValue = 0;
             //
             if (ClasesCompartidas.LocalidadNueva != null)
             {
@@ -165,6 +205,8 @@ namespace ViewStockNew.Views
             {
                 if (editando)
                 {
+                    var data = unitOfWork.CuentaRepository.GetByID(IdCuentaModify);
+                    //
                     Cuenta cuenta = new Cuenta()
                     {
                         Id = IdCuentaModify,
@@ -179,7 +221,9 @@ namespace ViewStockNew.Views
                         Visible = true,
                         Imagen = aByte,
                         UsuarioId = ClasesCompartidas.UserId,
-                        Modificacion = DateTime.Now
+                        Modificacion = DateTime.Now,
+                        Deuda = data.Deuda,
+                        Saldo = data.Saldo
 
                     };
                     // Se comprueba si el DNI y el Nombre de la cuenta han sufrido algun tipo de alteración
@@ -286,11 +330,11 @@ namespace ViewStockNew.Views
                         Nombre = TxtNombre.Text,
                         DNI = TxtDni.Text,
                         Telefono = TxtTelefono.Text,
-                        TelefonoDos = TxtTelefonoTwo.Text,
-                        Domicilio = TxtDomicilio.Text,
-                        Email = TxtEmail.Text,
-                        ProvinciaId = (int)ComboProvincia.SelectedValue,
-                        LocalidadId = (int)ComboLocalidad.SelectedValue,
+                        TelefonoDos = TxtTelefonoTwo.Text.Length < 1 ? "null" : TxtTelefonoTwo.Text,
+                        Domicilio = TxtDomicilio.Text.Length < 1 ? "null" : TxtDomicilio.Text,
+                        Email = TxtEmail.Text.Length < 1 ? "null" : TxtEmail.Text,
+                        ProvinciaId = ComboProvincia.SelectedValue == null ? 5 : (int)ComboLocalidad.SelectedValue,
+                        LocalidadId = ComboLocalidad.SelectedValue == null ? 4 : (int)ComboLocalidad.SelectedValue,
                         Visible = true,
                         Imagen = aByte,
                         UsuarioId = ClasesCompartidas.UserId,
@@ -320,7 +364,7 @@ namespace ViewStockNew.Views
                                     unitOfWork.Save();
                                     auxModify = 0;
                                     // Esto sirve para el formulario MakeSaleView, es decir al crear una cuenta nueva desde allí
-                                    ClasesCompartidas.CuentaNueva = TxtNombre.Text;
+                                    ClasesCompartidas.CuentaNueva = makesale != null ? TxtNombre.Text : null;
                                     // Al realizar un cambio en la lista de datos, es necesario realizar otra consulta a la
                                     // base de datos
                                     ClasesCompartidas.cuentasList.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(true));
@@ -461,6 +505,8 @@ namespace ViewStockNew.Views
             createDataView.ShowDialog();
             //
             CargarComboProvincia();
+            //
+            ClasesCompartidas.ProvinciaNueva = null;
         }
 
         private void BtnAgregarLocalidad_Click(object sender, EventArgs e)
@@ -472,6 +518,8 @@ namespace ViewStockNew.Views
             createDataView.ShowDialog();
             //
             CargarComboLocalidad();
+            //
+            ClasesCompartidas.LocalidadNueva = null;
         }
 
         private void BtnContinuar_Click(object sender, EventArgs e)
@@ -503,6 +551,16 @@ namespace ViewStockNew.Views
             ClasesCompartidas.ProvinciaNueva = null;
             //
             this.Close();
+        }
+
+        private void CreateAccount_Activated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateAccount_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

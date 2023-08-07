@@ -141,7 +141,7 @@
             GridData.AllowUserToDeleteRows = false;
             GridData.AllowUserToResizeColumns = false;
             GridData.AllowUserToResizeRows = false;
-            GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GridData.BackgroundColor = Color.FromArgb(50, 50, 50);
             GridData.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;

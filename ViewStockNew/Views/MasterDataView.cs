@@ -26,8 +26,8 @@ namespace ViewStockNew.Views
         //
         BindingSource productos = new BindingSource();
         BindingSource proveedores = new BindingSource();
-        BindingSource cuentas = new BindingSource(); 
-        BindingSource usuarios = new BindingSource(); 
+        BindingSource cuentas = new BindingSource();
+        BindingSource usuarios = new BindingSource();
         //
         #region Variables
         string DataValue;
@@ -256,6 +256,10 @@ namespace ViewStockNew.Views
             {
                 ComboData.SelectedIndex = 3;
             }
+            else if (DataValue == "remitos")
+            {
+                ComboData.SelectedIndex = 9;
+            }
             DatosCargados = 1;
 
         }
@@ -266,9 +270,11 @@ namespace ViewStockNew.Views
             {
                 if (DataValue == "productos")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                    //
                     LblTitleDatos.Text = "Productos";
                     listData.DataSource = ClasesCompartidas.productosList;
-
+                    GridData.DataSource = listData;
                     #region CombosAndChecksParaElFiltrado
                     //
                     // Check's Enabled or Disabled
@@ -335,6 +341,7 @@ namespace ViewStockNew.Views
                     BtnDis.Enabled = true;
                     BtnEliminar.Enabled = false;
                     BtnImprimir.Enabled = true;
+                    BtnEditar.Enabled = true;
                     // Funciones de Stock y de Precio
                     TxtPVP.Enabled = true;
                     IcoBtnCalcular.Enabled = true;
@@ -345,14 +352,20 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = true;
                     BtnCalcularBultoPVP.Enabled = true;
                     IcoBtnCalcular.Enabled = true;
+                    TxtDescuento.Enabled = true;
+                    BtnGuardarDescuento.Enabled = true;
+
                     // Remito
                     BtnRemito.Enabled = false;
                     #endregion
                 }
                 else if (DataValue == "proveedores")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     LblTitleDatos.Text = "Proveedores";
                     listData.DataSource = ClasesCompartidas.proveedoresList;
+                    GridData.DataSource = listData;
 
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -411,6 +424,7 @@ namespace ViewStockNew.Views
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
+                    BtnEditar.Enabled = true;
                     BtnNuevo.Enabled = true;
                     BtnEditar.Enabled = true;
                     BtnDetalles.Enabled = false;
@@ -432,6 +446,8 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
                     //
                     BtnRemito.Enabled = true;
 
@@ -439,8 +455,11 @@ namespace ViewStockNew.Views
                 }
                 else if (DataValue == "users")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     LblTitleDatos.Text = "Usuarios";
                     listData.DataSource = ClasesCompartidas.usuariosList;
+                    GridData.DataSource = listData;
 
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -527,13 +546,19 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
+
                     //
                     #endregion
                 }
                 else if (DataValue == "cuentas")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                    //
                     LblTitleDatos.Text = "Cuentas";
                     listData.DataSource = ClasesCompartidas.cuentasList;
+                    GridData.DataSource = listData;
 
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -620,11 +645,16 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
+
                     //
                     #endregion
                 }
                 else if (DataValue == "tipoDeProductos")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     listData.DataSource = ClasesCompartidas.tiposProductosList;
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -681,11 +711,12 @@ namespace ViewStockNew.Views
                     ComboTipoUsuario.Enabled = false;
                     #endregion
                     CheckFecha.Checked = false;
+                    GridData.DataSource = listData;
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
                     BtnNuevo.Enabled = true;
-                    BtnEditar.Enabled = true;
+                    BtnEditar.Enabled = false;
                     BtnDetalles.Enabled = false;
                     BtnEna.Enabled = false;
                     BtnDis.Enabled = true;
@@ -710,12 +741,17 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
+
                     //
                     BtnRemito.Enabled = false;
                     #endregion
                 }
                 else if (DataValue == "marcas")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     listData.DataSource = ClasesCompartidas.marcasList;
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -772,11 +808,12 @@ namespace ViewStockNew.Views
                     ComboTipoUsuario.Enabled = false;
                     #endregion
                     CheckFecha.Checked = false;
+                    GridData.DataSource = listData;
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
                     BtnNuevo.Enabled = true;
-                    BtnEditar.Enabled = true;
+                    BtnEditar.Enabled = false;
                     BtnDetalles.Enabled = false;
                     BtnEna.Enabled = false;
                     BtnDis.Enabled = true;
@@ -800,11 +837,16 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
+
                     //
                     #endregion
                 }
                 else if (DataValue == "specs")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     listData.DataSource = ClasesCompartidas.specsList;
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -861,11 +903,12 @@ namespace ViewStockNew.Views
                     ComboTipoUsuario.Enabled = false;
                     #endregion
                     CheckFecha.Checked = false;
+                    GridData.DataSource = listData;
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
                     BtnNuevo.Enabled = true;
-                    BtnEditar.Enabled = true;
+                    BtnEditar.Enabled = false;
                     BtnDetalles.Enabled = false;
                     BtnEna.Enabled = false;
                     BtnDis.Enabled = true;
@@ -891,11 +934,15 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
                     //
                     #endregion
                 }
                 else if (DataValue == "provincias")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     listData.DataSource = ClasesCompartidas.provinciasList;
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -952,11 +999,12 @@ namespace ViewStockNew.Views
                     ComboTipoUsuario.Enabled = false;
                     #endregion
                     CheckFecha.Checked = false;
+                    GridData.DataSource = listData;
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
                     BtnNuevo.Enabled = true;
-                    BtnEditar.Enabled = true;
+                    BtnEditar.Enabled = false;
                     BtnDetalles.Enabled = false;
                     BtnEna.Enabled = false;
                     BtnDis.Enabled = true;
@@ -982,11 +1030,15 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
                     //
                     #endregion
                 }
                 else if (DataValue == "localidades")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     listData.DataSource = ClasesCompartidas.localidadList;
                     #region CombosAndChecksParaElFiltrado
                     //
@@ -1043,11 +1095,12 @@ namespace ViewStockNew.Views
                     ComboTipoUsuario.Enabled = false;
                     #endregion
                     CheckFecha.Checked = false;
+                    GridData.DataSource = listData;
 
                     #region Enable&DisabledButtons
                     // AccionesButtons
                     BtnNuevo.Enabled = true;
-                    BtnEditar.Enabled = true;
+                    BtnEditar.Enabled = false;
                     BtnDetalles.Enabled = false;
                     BtnEna.Enabled = false;
                     BtnDis.Enabled = true;
@@ -1073,14 +1126,25 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
                     //
                     #endregion
                 }
                 else if (DataValue == "remitos")
                 {
+                    GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //
                     //listData.DataSource = ClasesCompartidas.localidadList;
                     GridRemitos.DataSource = ClasesCompartidas.remitos;
                     GridRemitosDetalle.DataSource = ClasesCompartidas.remitosDetalle;
+                    LblTitleDatos.Text = "Remitos";
+                    //
+                    GridData.Visible = false;
+                    GridRemitos.Visible = true;
+                    GridRemitosDetalle.Visible = true;
+                    RemitosDivider.Visible = true;
+                    //
                     #region CombosAndChecksParaElFiltrado
                     //
                     // Check's Enabled or Disabled
@@ -1154,7 +1218,7 @@ namespace ViewStockNew.Views
                     BtnRestar.Enabled = false;
                     TxtStock.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
-                    BtnRemito.Enabled = false;
+                    BtnRemito.Enabled = true;
                     // Funciones de Stock y de Precio
                     TxtPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
@@ -1165,6 +1229,8 @@ namespace ViewStockNew.Views
                     BtnGuardarPorcentaje.Enabled = false;
                     BtnCalcularBultoPVP.Enabled = false;
                     IcoBtnCalcular.Enabled = false;
+                    TxtDescuento.Enabled = false;
+                    BtnGuardarDescuento.Enabled = false;
                     //
                     #endregion
                 }
@@ -1175,6 +1241,8 @@ namespace ViewStockNew.Views
                 {
                     if (DataValue == "productos")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                        //
                         LblTitleDatos.Text = "Productos";
                         //listData.DataSource = await unitOfWork.ProductoRepository.GetAllAsync(include: c => c.Include(c => c.TipoProducto).Include(c => c.Marca).Include(c => c.SPEC).Include(c => c.Usuario), filter: v => v.Visible.Equals(false));
                         listData.DataSource = ClasesCompartidas.DesProductList;
@@ -1233,6 +1301,7 @@ namespace ViewStockNew.Views
                         ComboTipoUsuario.Enabled = false;
                         #endregion
                         CheckFecha.Checked = false;
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1268,12 +1337,17 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
+
                         //
                         #endregion
 
                     }
                     else if (DataValue == "proveedores")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         LblTitleDatos.Text = "Proveedores";
                         //listData.DataSource = await unitOfWork.ProveedorRepository.GetAllAsync(include: c => c.Include(c => c.Provincia).Include(c => c.Localidad).Include(c => c.Usuario), filter: v => v.Visible.Equals(false));
                         listData.DataSource = ClasesCompartidas.DesProveedorList;
@@ -1332,6 +1406,7 @@ namespace ViewStockNew.Views
                         ComboTipoUsuario.Enabled = false;
                         #endregion
                         CheckFecha.Checked = false;
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1367,11 +1442,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "users")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         LblTitleDatos.Text = "Usuarios";
                         listData.DataSource = await unitOfWork.UsuarioRepository.GetAllAsync(include: c => c.Include(c => c.TipoDeUsuario), filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
@@ -1429,6 +1508,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1462,11 +1542,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "cuentas")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                        //
                         LblTitleDatos.Text = "Cuentas";
                         listData.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
@@ -1524,6 +1608,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1559,11 +1644,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "tipoDeProductos")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         listData.DataSource = await unitOfWork.TipoProductoRepository.GetAllAsync(filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
                         #region CombosAndChecksParaElFiltrado
@@ -1620,6 +1709,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1655,12 +1745,16 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
 
                     }
                     else if (DataValue == "marcas")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         listData.DataSource = await unitOfWork.MarcaRepository.GetAllAsync(filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
                         #region CombosAndChecksParaElFiltrado
@@ -1717,6 +1811,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1752,11 +1847,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "specs")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         listData.DataSource = await unitOfWork.SPECRepository.GetAllAsync(filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
                         #region CombosAndChecksParaElFiltrado
@@ -1815,6 +1914,8 @@ namespace ViewStockNew.Views
                         #endregion
 
                         #region Enable&DisabledButtons
+                        GridData.DataSource = listData;
+
                         // AccionesButtons
                         BtnNuevo.Enabled = false;
                         //
@@ -1848,11 +1949,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "provincias")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         listData.DataSource = await unitOfWork.ProvinciaRepository.GetAllAsync(filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
                         #region CombosAndChecksParaElFiltrado
@@ -1909,6 +2014,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -1944,11 +2050,15 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
                     else if (DataValue == "localidades")
                     {
+                        GridData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        //
                         listData.DataSource = await unitOfWork.LocalidadRepository.GetAllAsync(filter: v => v.Visible.Equals(false));
                         CheckFecha.Checked = false;
                         #region CombosAndChecksParaElFiltrado
@@ -2005,6 +2115,7 @@ namespace ViewStockNew.Views
                         //
                         ComboTipoUsuario.Enabled = false;
                         #endregion
+                        GridData.DataSource = listData;
 
                         #region Enable&DisabledButtons
                         // AccionesButtons
@@ -2040,6 +2151,8 @@ namespace ViewStockNew.Views
                         BtnGuardarPorcentaje.Enabled = false;
                         BtnCalcularBultoPVP.Enabled = false;
                         IcoBtnCalcular.Enabled = false;
+                        TxtDescuento.Enabled = false;
+                        BtnGuardarDescuento.Enabled = false;
                         //
                         #endregion
                     }
@@ -2545,12 +2658,24 @@ namespace ViewStockNew.Views
                 var createDataView = new CreateDataView(dataSend, unitOfWork);
                 createDataView.ShowDialog();
             }
+            else if (DataValue == "provincias")
+            {
+                var dataSend = "provincia";
+                var createDataView = new CreateDataView(dataSend, unitOfWork);
+                createDataView.ShowDialog();
+            }
+            else if (DataValue == "localidades")
+            {
+                var dataSend = "localidad";
+                var createDataView = new CreateDataView(dataSend, unitOfWork);
+                createDataView.ShowDialog();
+            }
             GetAll();
         }
 
         private void MasterDataView_Activated(object sender, EventArgs e)
         {
-
+           
         }
 
         private void CheckCboTipo_CheckedChanged(object sender, EventArgs e)
@@ -3092,6 +3217,33 @@ namespace ViewStockNew.Views
             else
             {
                 FilterUsuarioId = 0;
+            }
+            // Tipo de Usuario
+            if (CheckTipoUsuario.Checked == true)
+            {
+                FilterTipoUsuarioId = (int)ComboTipoUsuario.SelectedValue;
+            }
+            else
+            {
+                FilterTipoUsuarioId = 0;
+            }
+            // Provincia
+            if (CheckCboProvincia.Checked == true)
+            {
+                FilterProvinciaId = (int)ComboProvincia.SelectedValue;
+            }
+            else
+            {
+                FilterProvinciaId = 0;
+            }
+            // Localidad
+            if (CheckCboLocalidad.Checked == true)
+            {
+                FilterLocalidadId = (int)ComboLocalidad.SelectedValue;
+            }
+            else
+            {
+                FilterLocalidadId = 0;
             }
             // Fecha
             if (CheckFecha.Checked == true)
@@ -3801,10 +3953,19 @@ namespace ViewStockNew.Views
 
         private void BtnRemito_Click(object sender, EventArgs e)
         {
-            var IdProvedor = (int)GridData.CurrentRow.Cells["Id"].Value;
-            //
-            var remitoView = new RemitoView(unitOfWork, IdProvedor);
-            remitoView.ShowDialog();
+            if (DataValue == "proveedores")
+            {
+                var IdProvedor = (int)GridData.CurrentRow.Cells["Id"].Value;
+                //
+                var remitoView = new RemitoView(unitOfWork, IdProvedor);
+                remitoView.ShowDialog();
+            }
+            else
+            {
+                IUnitOfWork unitOfWork = new UnitOfWork();
+                var remitoView = new RemitoView(unitOfWork);
+                remitoView.ShowDialog();
+            }
         }
 
         private void GridRemitos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -3900,6 +4061,16 @@ namespace ViewStockNew.Views
                 }
                 //
                 if (columna.Name == "SPECId")
+                {
+                    columna.Visible = false;
+                }
+                //
+                if (columna.Name == "Remito")
+                {
+                    columna.Visible = false;
+                }
+                //
+                if (columna.Name == "RemitoId")
                 {
                     columna.Visible = false;
                 }

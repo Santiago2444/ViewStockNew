@@ -25,6 +25,7 @@ namespace ViewStockNew.Views
         private int idSeleccionado;
         private int IdProveedorModify;
         private string _Nombre;
+        private bool? remito = null;
 
         public CreateProveedorView(IUnitOfWork unitOfWork, bool Editando)
         {
@@ -104,6 +105,34 @@ namespace ViewStockNew.Views
             }
             //
             _Nombre = proveedorEdit.Nombre;
+        }
+
+        public CreateProveedorView(IUnitOfWork unitOfWork, bool Editando, bool remito) : this(unitOfWork, Editando)
+        {
+            InitializeComponent();
+            this.unitOfWork = unitOfWork;
+            this.editando = Editando;
+            this.remito = remito;
+            //
+            CargarComboLocalidad();
+            CargarComboProvincia();
+            //
+            BtnEliminarImagen.Enabled = false;
+            //
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.BtnGuardar, "Guardar");
+            //
+            System.Windows.Forms.ToolTip ToolTip2 = new System.Windows.Forms.ToolTip();
+            ToolTip2.SetToolTip(this.BtnCancelar, "Cancelar");
+            //
+            System.Windows.Forms.ToolTip ToolTip3 = new System.Windows.Forms.ToolTip();
+            ToolTip3.SetToolTip(this.BtnContinuar, "Continuar");
+            //
+            System.Windows.Forms.ToolTip ToolTip4 = new System.Windows.Forms.ToolTip();
+            ToolTip4.SetToolTip(this.BtnAgregarLocalidad, "Agregar nueva Localidad");
+            //
+            System.Windows.Forms.ToolTip ToolTip5 = new System.Windows.Forms.ToolTip();
+            ToolTip5.SetToolTip(this.BtnAgregarProvincia, "Agregar nueva Provincia");
         }
 
         private void CargarComboProvincia(int? provinciaId = 0)
@@ -189,10 +218,10 @@ namespace ViewStockNew.Views
                         Id = IdProveedorModify,
                         Nombre = TxtNombre.Text,
                         Telefono = TxtTelefono.Text,
-                        Email = TxtEmail.Text,
-                        Direccion = TxtDireccion.Text,
-                        ProvinciaId = (int)ComboProvincia.SelectedValue,
-                        LocalidadId = (int)ComboLocalidad.SelectedValue,
+                        Email = TxtEmail.Text.Length < 1 ? "null" : TxtEmail.Text,
+                        Direccion = TxtDireccion.Text.Length < 1 ? "null" : TxtDireccion.Text,
+                        ProvinciaId = ComboProvincia.SelectedValue == null ? 5 : (int)ComboProvincia.SelectedValue,
+                        LocalidadId = ComboLocalidad.SelectedValue == null ? 5 : (int)ComboLocalidad.SelectedValue,
                         Modificacion = DateTime.Now,
                         UsuarioId = ClasesCompartidas.UserId,
                         Visible = true,
@@ -272,11 +301,11 @@ namespace ViewStockNew.Views
                     {
                         // Al ser un Proveedor nuevo el Id es autoincremental
                         Nombre = TxtNombre.Text,
-                        Telefono = TxtTelefono.Text,
-                        Email = TxtEmail.Text,
-                        Direccion = TxtDireccion.Text,
-                        ProvinciaId = (int?)ComboProvincia.SelectedValue,
-                        LocalidadId = (int?)ComboLocalidad.SelectedValue,
+                        Telefono = TxtTelefono.Text.Length < 1 ? "null" : TxtTelefono.Text,
+                        Email = TxtEmail.Text.Length < 1 ? "null" : TxtEmail.Text,
+                        Direccion = TxtDireccion.Text.Length < 1 ? "null" : TxtDireccion.Text,
+                        ProvinciaId = ComboProvincia.SelectedValue == null ? 5 : (int)ComboProvincia.SelectedValue,
+                        LocalidadId = ComboLocalidad.SelectedValue == null ? 4 : (int)ComboLocalidad.SelectedValue,
                         Modificacion = DateTime.Now,
                         UsuarioId = ClasesCompartidas.UserId,
                         Visible = true,
@@ -295,7 +324,8 @@ namespace ViewStockNew.Views
                             DialogResult respuesta = MessageBox.Show($"¿Está seguro que desea guardar este nuevo proveedor?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (respuesta == DialogResult.Yes)
                             {
-                                ClasesCompartidas.ProveedorNuevo = TxtNombre.Text;
+                                //
+                                ClasesCompartidas.ProveedorNuevo = remito != null ? TxtNombre.Text : null;
                                 unitOfWork.ProveedorRepository.Add(proveedor);
                                 unitOfWork.Save();
                                 auxModify = 0;
@@ -438,6 +468,8 @@ namespace ViewStockNew.Views
             createDataView.ShowDialog();
             //
             CargarComboProvincia();
+            //
+            ClasesCompartidas.ProvinciaNueva = null;
         }
 
         private void BtnAgregarLocalidad_Click(object sender, EventArgs e)
@@ -449,6 +481,13 @@ namespace ViewStockNew.Views
             createDataView.ShowDialog();
             //
             CargarComboLocalidad();
+            //
+            ClasesCompartidas.LocalidadNueva = null;
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -418,23 +418,36 @@ namespace ViewStockNew.Views
         private void BtnNuevoProveedor_Click(object sender, EventArgs e)
         {
             bool editando = false;
+            bool remito = true;
             IUnitOfWork unitOfWork = new UnitOfWork();
             //
-            var createProovedorView = new CreateProveedorView(unitOfWork, editando);
+            var createProovedorView = new CreateProveedorView(unitOfWork, editando, remito);
             createProovedorView.ShowDialog();
             //
-            CargarComboProveedor();
+            if (ClasesCompartidas.ProveedorNuevo != null)
+            {
+                CargarComboProveedor();
+            }
+            //
+            ClasesCompartidas.ProveedorNuevo = null;
         }
 
         private void BtnAgregarProducto_Click(object sender, EventArgs e)
         {
             bool editando = false;
+            bool remito = true;
+            //
             IUnitOfWork unitOfWork = new UnitOfWork();
             //
-            var createProductView = new CreateProductView(unitOfWork, editando);
+            var createProductView = new CreateProductView(unitOfWork, editando, remito);
             createProductView.ShowDialog();
             //
-            FilterProductoCreado();
+            if (ClasesCompartidas.ProductoId != null)
+            {
+                FilterProductoCreado();
+            }
+            //
+            ClasesCompartidas.ProductoId = null;
         }
 
         private async void FilterProductoCreado()
@@ -800,8 +813,10 @@ namespace ViewStockNew.Views
                         columna.Visible = false;
                     if (columna.Name == "Password")
                         columna.Visible = false;
-
-
+                    if (columna.Name == "Remito")
+                        columna.Visible = false;
+                    if (columna.Name == "RemitoId")
+                        columna.Visible = false;
                     if (columna.Name == "Usuario")
                         columna.Visible = false;
                     if (columna.Name == "Proveedor")
@@ -928,6 +943,8 @@ namespace ViewStockNew.Views
                 GetComboData();
                 GetGridsData();
                 tabControl1.SelectedIndex = 0;
+                CantidadCarrito = 0;
+                PrecioAcumulado = 0;
                 //
                 MessageBox.Show($"El Remito se ha cancelado con éxito!", "Remito Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -957,6 +974,7 @@ namespace ViewStockNew.Views
                 GetGridsData();
                 RecargarData();
                 tabControl1.SelectedIndex = 0;
+                BtnImprimir.Enabled = true;
                 //
                 MessageBox.Show($"El Remito se ha guardado con éxito!", "Remito Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

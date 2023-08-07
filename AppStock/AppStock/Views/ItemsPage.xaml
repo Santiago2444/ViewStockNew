@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppStock.Views.ItemsPage"
+             Title="Cuentas"
+             xmlns:local="clr-namespace:AppStock.ViewModels"  
+             xmlns:model="clr-namespace:AppStock.Models" xmlns:d="http://xamarin.com/schemas/2014/forms/design"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    <ContentPage.Content>
+        <StackLayout Spacing="4" Padding="20">
+            <ListView x:Name="ListViewCuentas" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Frame BorderColor="Black" Padding="20" Margin="10" HasShadow="True"  CornerRadius="5" BackgroundColor="White" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Label BackgroundColor="#E8E8E8" Padding="10,0,0,0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" Text="Nombre:" Grid.Column="0" Grid.Row="0" VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding Nombre}" FontSize="Medium" TextColor="Black" Grid.Column="0" Grid.Row="1"  VerticalTextAlignment="Center" Padding="10,0,0,0"></Label>
+                                        <Label BackgroundColor="#E8E8E8" Padding="10,0,0,0" FontAttributes="Bold" Text="DNI:" Grid.Column="0" Grid.Row="2" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center" ></Label>
+                                        <Label Padding="10,0,0,0" Text="{Binding DNI}" Grid.Column="0" Grid.Row="3" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center" ></Label>
+                                        <Label BackgroundColor="#E8E8E8" Padding="10,0,0,0" FontAttributes="Bold" Text="Telefono:" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center"  Grid.Column="0" Grid.Row="4"></Label>
+                                        <Label Padding="10,0,0,0" Text="{Binding Telefono}" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center"  Grid.Column="0" Grid.Row="5"></Label>
+                                        <Label BackgroundColor="#E8E8E8" Padding="10,0,0,0" FontAttributes="Bold" Text="Domicilio:" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center"  Grid.Column="0" Grid.Row="6"></Label>
+                                        <Label Padding="10,0,0,0" Text="{Binding Domicilio}" Grid.Column="0" Grid.Row="7" FontSize="Medium" TextColor="Black" VerticalTextAlignment="Center" ></Label>
+
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

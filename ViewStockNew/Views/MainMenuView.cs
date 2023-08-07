@@ -32,7 +32,7 @@ namespace ViewStockNew.Views
             ToolTip4.SetToolTip(this.IcoBtnRemito, "Realizar Remito");
             //
             System.Windows.Forms.ToolTip ToolTip5 = new System.Windows.Forms.ToolTip();
-            ToolTip5.SetToolTip(this.IcoBtnProducto, "Crear Producto");
+            ToolTip5.SetToolTip(this.IcoBtnProducto, "Lista de Productos");
         }
 
         private void IcoItemProductos_Click(object sender, EventArgs e)
@@ -213,11 +213,10 @@ namespace ViewStockNew.Views
 
         private void IcoBtnProducto_Click(object sender, EventArgs e)
         {
-            bool editando = false;
+            var dataValue = "productos";
             IUnitOfWork unitOfWork = new UnitOfWork();
-            //
-            var createProductView = new CreateProductView(unitOfWork, editando);
-            createProductView.ShowDialog();
+            var masterDataView = new MasterDataView(unitOfWork, dataValue);
+            masterDataView.Show();
         }
 
         private void IcoBtnCrearUsuario_Click(object sender, EventArgs e)
@@ -237,6 +236,14 @@ namespace ViewStockNew.Views
         private void IcoBtnCuenta_Click(object sender, EventArgs e)
         {
             var dataValue = "cuentas";
+            IUnitOfWork unitOfWork = new UnitOfWork();
+            var masterDataView = new MasterDataView(unitOfWork, dataValue);
+            masterDataView.Show();
+        }
+
+        private void MenuRemitoList_Click(object sender, EventArgs e)
+        {
+            var dataValue = "remitos";
             IUnitOfWork unitOfWork = new UnitOfWork();
             var masterDataView = new MasterDataView(unitOfWork, dataValue);
             masterDataView.Show();

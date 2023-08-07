@@ -31,9 +31,9 @@ namespace ViewStockNew.Data
                     maxRetryCount: 5,
                     maxRetryDelay: System.TimeSpan.FromSeconds(30),
                    errorNumbersToAdd: null));
-                
+
                 /*
-                optionsBuilder.UseMySql("Server=bcixupzwypo8hnmj6ifv-mysql.services.clever-cloud.com;Database=bcixupzwypo8hnmj6ifv;Uid=ujogvmdkuv7kdus8;Pwd=9vjHMjwC2v902MwDC3Vc;", ServerVersion.AutoDetect("Server=-bcixupzwypo8hnmj6ifv-mysql.services.clever-cloud.com;Database=bcixupzwypo8hnmj6ifv;Uid=ujogvmdkuv7kdus8;Pwd=9vjHMjwC2v902MwDC3Vc;"),
+                optionsBuilder.UseMySql("Server=bvpghk30tjjalsdr4eel-mysql.services.clever-cloud.com;Database=bvpghk30tjjalsdr4eel;Uid=uuszol3ba4e9gp4s;Pwd=QYy2Uh4gTCyrWe5TsbBm;", ServerVersion.AutoDetect("Server=-bcixupzwypo8hnmj6ifv-mysql.services.clever-cloud.com;Database=bcixupzwypo8hnmj6ifv;Uid=ujogvmdkuv7kdus8;Pwd=9vjHMjwC2v902MwDC3Vc;"),
                  options => options.EnableRetryOnFailure(
                  maxRetryCount: 5,
                  maxRetryDelay: System.TimeSpan.FromSeconds(30),
@@ -76,10 +76,10 @@ namespace ViewStockNew.Data
             {
                 entity.ToTable("provincias");
             });
-            //modelBuilder.Entity<Usuario>(entity =>
-            //{
-            //    entity.ToTable("usuarios");
-            //});
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable("usuarios");
+            });
             modelBuilder.Entity<Marca>(entity =>
             {
                 entity.ToTable("marcas");
@@ -160,6 +160,13 @@ namespace ViewStockNew.Data
                     Nombre = "Llambi Cámpbell",
                     Visible = true
 
+                },
+                new Localidad
+                {
+                    Id = 4,
+                    Nombre = "null",
+                    Visible = true
+
                 }
             );
             #endregion
@@ -191,6 +198,13 @@ namespace ViewStockNew.Data
                 {
                     Id = 4,
                     Nombre = "Mendoza",
+                    Visible = true
+
+                },
+                new Provincia
+                {
+                    Id = 5,
+                    Nombre = "null",
                     Visible = true
 
                 }
@@ -327,6 +341,16 @@ namespace ViewStockNew.Data
                     Id = 1,
                     Nombre = "Empleado",
                     User = "empleado",
+                    Password = HashPassword.ObtenerHashSha256("1234560"),
+                    Genero = "Masculino",
+                    TipoDeUsuarioId = 3,
+                    Visible = true
+                },
+                new Usuario
+                {
+                    Id = 4,
+                    Nombre = "WebStockUser",
+                    User = "superadmin",
                     Password = HashPassword.ObtenerHashSha256("1234560"),
                     Genero = "Masculino",
                     TipoDeUsuarioId = 3,

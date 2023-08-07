@@ -9,7 +9,7 @@ namespace ViewStockNew.Models
     public class ClasesCompartidas
     {
         // Variables staticas
-        public static int UserId;
+        public static int? UserId = null;
 
         public static int? TipoUsuarioId = null;
 
@@ -34,6 +34,8 @@ namespace ViewStockNew.Models
         public static int? RemitoId = null;
 
         public static int? PagoId = null;
+
+        public static int? SaldoId = null;
 
         // Listas de datos habilitados y otras cosas importantes
         public static BindingSource marcasList = new BindingSource();

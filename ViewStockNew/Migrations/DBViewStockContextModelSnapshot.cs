@@ -148,6 +148,12 @@ namespace ViewStockNew.Migrations
                             Id = 3,
                             Nombre = "Llambi Cámpbell",
                             Visible = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nombre = "null",
+                            Visible = true
                         });
                 });
 
@@ -445,6 +451,12 @@ namespace ViewStockNew.Migrations
                             Id = 4,
                             Nombre = "Mendoza",
                             Visible = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Nombre = "null",
+                            Visible = true
                         });
                 });
 
@@ -695,7 +707,7 @@ namespace ViewStockNew.Migrations
 
                     b.HasIndex("TipoDeUsuarioId");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("usuarios", (string)null);
 
                     b.HasData(
                         new
@@ -726,6 +738,16 @@ namespace ViewStockNew.Migrations
                             Password = "0f7bfe6859999fd0ee6e4a7b725d466cebebec7ca75ddd7ef0f2e6d648db6d8f",
                             TipoDeUsuarioId = 3,
                             User = "empleado",
+                            Visible = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Genero = "Masculino",
+                            Nombre = "WebStockUser",
+                            Password = "0f7bfe6859999fd0ee6e4a7b725d466cebebec7ca75ddd7ef0f2e6d648db6d8f",
+                            TipoDeUsuarioId = 3,
+                            User = "superadmin",
                             Visible = true
                         });
                 });
@@ -758,9 +780,8 @@ namespace ViewStockNew.Migrations
                     b.Property<decimal>("Importe")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("PagoId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int?>("PagoId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UsuarioId")
                         .HasColumnType("int");
@@ -771,6 +792,8 @@ namespace ViewStockNew.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CuentaId");
+
+                    b.HasIndex("PagoId");
 
                     b.HasIndex("UsuarioId");
 
@@ -1026,11 +1049,17 @@ namespace ViewStockNew.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ViewStockNew.Models.Pago", "Pago")
+                        .WithMany()
+                        .HasForeignKey("PagoId");
+
                     b.HasOne("ViewStockNew.Models.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Cuenta");
+
+                    b.Navigation("Pago");
 
                     b.Navigation("Usuario");
                 });

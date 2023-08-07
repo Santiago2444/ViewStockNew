@@ -747,8 +747,10 @@ namespace ViewStockNew.Views
                         columna.Visible = false;
                     if (columna.Name == "Password")
                         columna.Visible = false;
-
-
+                    if (columna.Name == "Venta")
+                        columna.Visible = false;
+                    if (columna.Name == "VentaId")
+                        columna.Visible = false;
                     if (columna.Name == "Usuario")
                         columna.Visible = false;
                     if (columna.Name == "Proveedor")
@@ -1069,6 +1071,8 @@ namespace ViewStockNew.Views
                 BtnAgregar.Enabled = false;
                 BtnQuitar.Enabled = false;
                 //
+                //
+                BtnRealizarOtraVenta.Enabled = true;
                 BtnTerminarVenta.Enabled = true;
             }
         }
@@ -1419,7 +1423,7 @@ namespace ViewStockNew.Views
                             FechaDePago = DateTime.Now,
                             Pagado = "Carrito",
                             Imagen = (byte[]?)GridProductos.CurrentRow.Cells["Imagen"].Value,
-                            UsuarioId = ClasesCompartidas.UserId
+                            UsuarioId = (int)ClasesCompartidas.UserId
 
                         };
                         _ventaDetalle = ventaDetalle;
@@ -1443,7 +1447,7 @@ namespace ViewStockNew.Views
                             FechaDePago = DateTime.Now,
                             Pagado = "Carrito",
                             Imagen = (byte[]?)GridProductos.CurrentRow.Cells["Imagen"].Value,
-                            UsuarioId = ClasesCompartidas.UserId
+                            UsuarioId = (int)ClasesCompartidas.UserId
 
                         };
                         //
@@ -1466,14 +1470,14 @@ namespace ViewStockNew.Views
                     if (!bultoExistente || !productoExistente) // Nuevo producto en el carrito 
                     {
                         var productoResStock = unitOfWork.ProductoRepository.GetByID(IdProducto);
-                        if (RadioUnidad.Enabled == true)
+                        if (RadioUnidad.Checked == true)
                         {
                             productoResStock.Carrito = productoResStock.Carrito + CantidadDeseada;
                             productoResStock.Stock = StockActual - CantidadDeseada;
                         }
                         else
                         {
-                            productoResStock.Carrito = productoResStock.Carrito + CantidadDeseada * Convert.ToInt32(GridProductos.CurrentRow.Cells["CantidadBulto"].Value);
+                            productoResStock.Carrito = productoResStock.Carrito + (CantidadDeseada * Convert.ToInt32(GridProductos.CurrentRow.Cells["CantidadBulto"].Value));
                             productoResStock.Stock = StockActual - CantidadDeseada * Convert.ToInt32(GridProductos.CurrentRow.Cells["CantidadBulto"].Value);
                         }
                         //
@@ -1544,7 +1548,7 @@ namespace ViewStockNew.Views
                             //    UsuarioId = ClasesCompartidas.UserId
                             //};
                             var productoRestStock2 = unitOfWork.ProductoRepository.GetByID(IdProducto);
-                            if (RadioUnidad.Enabled == true)
+                            if (RadioUnidad.Checked == true)
                             {
                                 productoRestStock2.Stock = productoRestStock2.Stock - CantidadDeseada;
                                 productoRestStock2.Carrito = productoRestStock2.Carrito + CantidadDeseada;
@@ -1655,7 +1659,7 @@ namespace ViewStockNew.Views
             }
             else
             {
-                if (Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["Cantidad"].Value) < CantidadDeseada || CantidadDeseada == Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["CantidadxBultos"].Value))
+                if (Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["Cantidad"].Value) == CantidadDeseada || CantidadDeseada == Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["CantidadBultos"].Value) || Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["Cantidad"].Value) == Convert.ToInt32(GridVentaDetalle.CurrentRow.Cells["CantidadXBultos"].Value))
                 {
                     // Delete 
                     var ventaDetalle = unitOfWork.VentaDetalleRepository.GetByID(IdVentaDetalle);
@@ -2153,6 +2157,7 @@ namespace ViewStockNew.Views
             // Al terminar la venta, ciertas funciones se habilitan para dar lugar a una nueva venta
             //
             //
+            BtnRealizarOtraVenta.Enabled = false;
             FechaDesde.Enabled = true;
             BtnRecargarData.Enabled = true;
             BtnBuscar.Enabled = true;
@@ -2183,11 +2188,17 @@ namespace ViewStockNew.Views
         private void BtnAgregarCuenta_Click(object sender, EventArgs e)
         {
             bool editando = false;
+            bool makesale = true;
             //
-            var createAccount = new CreateAccount(unitOfWork, editando);
+            var createAccount = new CreateAccount(unitOfWork, editando, makesale);
             createAccount.ShowDialog();
             //
-            GetComboCuentas();
+            if (ClasesCompartidas.CuentaNueva != null)
+            {
+                GetComboCuentas();
+            }
+            //
+            ClasesCompartidas.CuentaNueva = null;
         }
 
         private void GridProductos_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)

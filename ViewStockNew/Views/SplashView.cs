@@ -134,13 +134,10 @@ namespace ViewStockNew.Views
             // Busca si existen los datos ingresados, si es asi, los almacena
             foreach (Usuario item in usuarios)
             {
-                for (int i = 0; i < listUsersCount; i++)
+                if (txtUser == item.User && password == item.Password && ClasesCompartidas.UserId == null)
                 {
-                    if (txtUser == item.User && password == item.Password)
-                    {
-                        ClasesCompartidas.UserId = item.Id;
-                        ClasesCompartidas.TipoUsuarioId = item.TipoDeUsuarioId;
-                    }
+                    ClasesCompartidas.UserId = item.Id;
+                    ClasesCompartidas.TipoUsuarioId = item.TipoDeUsuarioId;
                 }
             }
 

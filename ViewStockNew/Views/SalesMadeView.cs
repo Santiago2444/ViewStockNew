@@ -92,6 +92,10 @@ namespace ViewStockNew.Views
                     columna.Visible = false;
                 if (columna.Name == "Estado")
                     columna.Visible = false;
+                if (columna.Name == "Pago")
+                    columna.Visible = false;
+                if (columna.Name == "PagoId")
+                    columna.Visible = false;
                 #endregion
                 //
                 #region AjusteDeColumnas
@@ -157,6 +161,10 @@ namespace ViewStockNew.Views
                         columnaD.Visible = false;
                     if (columnaD.Name == "Imagen")
                         columnaD.Visible = false;
+                    if (columnaD.Name == "Venta")
+                        columnaD.Visible = false;
+                    if (columnaD.Name == "VentaId")
+                        columnaD.Visible = false;
                     #endregion
                     //
                     #region AjusteDeColumnas
@@ -167,7 +175,6 @@ namespace ViewStockNew.Views
                     {
                         columnaD.Width = 90;
                         columnaD.DefaultCellStyle.Format = "$" + "0.00";
-                        columnaD.HeaderText = "Precio";
                     }
                     //
                     if (columnaD.Name == "Cantidad")
@@ -184,6 +191,22 @@ namespace ViewStockNew.Views
                         columnaD.HeaderText = "Código";
                         columnaD.Width = 65;
                     }
+                    //
+                    if (columnaD.Name == "PrecioBulto")
+                    {
+                        columnaD.HeaderText = "Precio Bulto";
+                        columnaD.Width = 65;
+                        columnaD.DefaultCellStyle.Format = "#" + "0.00";
+                    }
+                    //
+                    if (columnaD.Name == "CantidadBultos")
+                        columnaD.HeaderText = "Cant. Bultos";
+                    //
+                    if (columnaD.Name == "CantidadXBultos")
+                        columnaD.HeaderText = "Uds. por Bulto";
+                    //
+                    if (columnaD.Name == "Cantidad")
+                        columnaD.HeaderText = "Cantidad Total";
                     #endregion
                 }
             };

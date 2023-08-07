@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,15 @@ namespace ViewStockNew.ViewReport
 
         private void ComprobanteViewReport_Load(object sender, EventArgs e)
         {
+            PageSettings page = new PageSettings();
+            //
+            page.Margins.Left = 0;
+            page.Margins.Right = 0;
+            page.Margins.Top = 0;
+            page.Margins.Bottom = 0;
+            //
+            reporte.SetPageSettings(page);
+            //
             CargarReporteAsync();
         }
 
@@ -62,7 +72,7 @@ namespace ViewStockNew.ViewReport
                                           TipoComprobante = remitoDetalle.Remito.TipoComprobante,
                                           CantidadTotal = remitoDetalle.Remito.CantidadProductos,
                                           Bulto = remitoDetalle.bulto,
-                                          Usuario = remitoDetalle.Remito.Usuario
+                                          Usuario = remitoDetalle.Remito.Usuario.Nombre
                                       };
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSComprobante", comprobanteImprimir.ToList()));
             reporte.RefreshReport();

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace ViewStockNew.Views
         IUnitOfWork unitOfWork;
         private int IdCuenta;
         BindingSource comprobantePago = new BindingSource();
+        BindingSource comprobanteSaldo = new BindingSource();
         //
         #region BindingSource's
 
@@ -32,8 +34,8 @@ namespace ViewStockNew.Views
         private decimal _dinero;
         private decimal _vuelto;
         private int CodigoVespecifico;
-        private bool FilterDC;
-        private bool FilterDP;
+        private bool FilterDC = false;
+        private bool FilterDP = false;
         private int FilterUsuariosVenta;
         private int FilterFechaVenta;
         private int FilterTipoId;
@@ -42,8 +44,8 @@ namespace ViewStockNew.Views
         private int FilterProveedorId;
         private DateTime FechaHastaSend;
         private DateTime FechaDesdeSend;
-        private bool Cfilter;
-        private bool Pfilter;
+        private bool Cfilter = false;
+        private bool Pfilter = false;
         #endregion
 
         public AccountsView(IUnitOfWork unitOfWork, int idCuenta)
@@ -638,10 +640,20 @@ namespace ViewStockNew.Views
                         DialogResult respuesta = MessageBox.Show($"El dinero del cliente no alcanza para saldar ningua de las deudas ¿Desea agregarlo al 'Saldo' de su cuenta?", "Añadir al saldo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (respuesta == DialogResult.Yes)
                         {
+                            var aux = LblSaldo.Text;
+                            LblSaldo.Text = aux.Remove(aux.Length - 1);
+                            LblSaldo.ForeColor = SystemColors.ControlLightLight;
+                            //
+                            _dinero = dinero - Convert.ToDecimal(SaldoDecimal);
+                            //
+                            TxtDinero.Text = $"${_dinero:0.00}";
+                            //
+                            TxtVuelto.Text = $"$0";
+                            //
                             var saveLoading = new SaveView(unitOfWork, _dinero, IdCuenta);
                             saveLoading.ShowDialog();
                             //
-                            MessageBox.Show($"El Saldo de ${dinero:0.00} ha sido añadido a la cuenta!", "Saldo Añadido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"El Saldo de ${_dinero:0.00} ha sido añadido a la cuenta!", "Saldo Añadido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //
 
                             GetAccountData();
@@ -834,11 +846,30 @@ namespace ViewStockNew.Views
                 ResetMetodosDePago();
                 FillGrids();
                 //
-                GridComprasDeudas.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
-                GridComprasDeudas.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                foreach (DataGridViewRow row in GridComprasDeudas.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                    row.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                }
                 //
-                GridProductosDeudas.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
-                GridProductosDeudas.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                foreach (DataGridViewRow row in GridProductosDeudas.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                    row.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                }
+
+                //GridComprasDeudas.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                //GridComprasDeudas.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                ////
+                //GridProductosDeudas.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                //GridProductosDeudas.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+                //
+                if (SaldoDecimal > 0) 
+                {
+                    var aux = LblSaldo.Text;
+                    LblSaldo.Text = aux.Remove(aux.Length - 1);
+                    LblSaldo.ForeColor = SystemColors.ControlLightLight;
+                }
             }
         }
 
@@ -881,7 +912,7 @@ namespace ViewStockNew.Views
                 //
                 AplicarFiltroProductosDeuda.IconChar = FontAwesome.Sharp.IconChar.FilterCircleXmark;
             }
-            else
+            else if (TabControl.SelectedIndex == 2)
             {
                 RadioEspecífico.Enabled = true;
                 RadioTotal.Enabled = true;
@@ -930,7 +961,7 @@ namespace ViewStockNew.Views
                 GridComprasDeudas.DataSource = ClasesCompartidas.ComprasDeudaList;
             }
             //
-            if (Pfilter == true)
+            if (FilterDP == true)
             {
                 DeudaTxtProductos.Text = " ";
                 GridProductosDeudas.DataSource = ClasesCompartidas.ProductosDeudaList;
@@ -1329,10 +1360,23 @@ namespace ViewStockNew.Views
 
         private async void BtnImprimir_Click(object sender, EventArgs e)
         {
-            comprobantePago.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta).Include(q => q.Venta).Include(q => q.Venta.Pago), filter: q => q.Pagado == "Si" && q.Venta.PagoId.Equals(ClasesCompartidas.PagoId));
+            if (ClasesCompartidas.SaldoId != null)
+            {
+                comprobanteSaldo.DataSource = await unitOfWork.PagoRepository.GetAllAsync(include: q => q.Include(q => q.Cuenta).Include(q => q.Usuario), filter: q => q.Id.Equals(ClasesCompartidas.SaldoId));
+                //
+                SaldoViewReport saldoViewReport = new SaldoViewReport(comprobanteSaldo);
+                saldoViewReport.ShowDialog();
+            }
+            else
+            {
+                comprobantePago.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta).Include(q => q.Venta).Include(q => q.Venta.Pago).Include(q => q.Venta.Pago.Usuario).Include(q => q.Venta.Cuenta), filter: q => q.Pagado == "Si" && q.Venta.PagoId.Equals(ClasesCompartidas.PagoId));
+                //
+                ComprobantePagoViewReport comprobantePagoViewReport = new ComprobantePagoViewReport(comprobantePago);
+                comprobantePagoViewReport.ShowDialog();
+            }
             //
-            ComprobantePagoViewReport comprobantePagoViewReport = new ComprobantePagoViewReport(comprobantePago);
-            comprobantePagoViewReport.ShowDialog();
+            ClasesCompartidas.SaldoId = null;
+            ClasesCompartidas.PagoId = null;
         }
     }
 }

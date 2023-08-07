@@ -212,7 +212,7 @@ namespace ViewStockNew.Views
                         Nombre = TxtNombreApellido.Text,
                         User = TxtUsuario.Text,
                         Password = HashPassword.ObtenerHashSha256(TxtContraseña.Text),
-                        Genero = (string)ComboGenero.SelectedItem,
+                        Genero = ComboGenero.SelectedItem == null ? "null" : (string)ComboGenero.SelectedItem,
                         TipoDeUsuarioId = (int)ComboTipoDeUsuario.SelectedValue,
                         Modificacion = DateTime.Now,
                         Imagen = aByte,

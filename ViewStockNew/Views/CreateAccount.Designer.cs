@@ -115,7 +115,7 @@
             TxtNombre.ForeColor = SystemColors.ButtonFace;
             TxtNombre.Location = new Point(23, 159);
             TxtNombre.Name = "TxtNombre";
-            TxtNombre.Size = new Size(194, 19);
+            TxtNombre.Size = new Size(429, 19);
             TxtNombre.TabIndex = 114;
             TxtNombre.TextChanged += TxtNombre_TextChanged;
             // 
@@ -126,9 +126,9 @@
             label13.ForeColor = SystemColors.ButtonFace;
             label13.Location = new Point(23, 138);
             label13.Name = "label13";
-            label13.Size = new Size(76, 18);
+            label13.Size = new Size(159, 18);
             label13.TabIndex = 113;
-            label13.Text = "Nombre:";
+            label13.Text = "Nombre y Apellido:";
             // 
             // TxtTelefono
             // 
@@ -136,7 +136,7 @@
             TxtTelefono.BorderStyle = BorderStyle.None;
             TxtTelefono.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             TxtTelefono.ForeColor = SystemColors.ButtonFace;
-            TxtTelefono.Location = new Point(23, 207);
+            TxtTelefono.Location = new Point(23, 256);
             TxtTelefono.Name = "TxtTelefono";
             TxtTelefono.Size = new Size(194, 19);
             TxtTelefono.TabIndex = 116;
@@ -147,7 +147,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(23, 186);
+            label1.Location = new Point(23, 235);
             label1.Name = "label1";
             label1.Size = new Size(84, 18);
             label1.TabIndex = 115;
@@ -159,7 +159,7 @@
             TxtTelefonoTwo.BorderStyle = BorderStyle.None;
             TxtTelefonoTwo.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             TxtTelefonoTwo.ForeColor = SystemColors.ButtonFace;
-            TxtTelefonoTwo.Location = new Point(258, 207);
+            TxtTelefonoTwo.Location = new Point(258, 256);
             TxtTelefonoTwo.Name = "TxtTelefonoTwo";
             TxtTelefonoTwo.Size = new Size(194, 19);
             TxtTelefonoTwo.TabIndex = 118;
@@ -170,7 +170,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(258, 186);
+            label2.Location = new Point(258, 235);
             label2.Name = "label2";
             label2.Size = new Size(161, 18);
             label2.TabIndex = 117;
@@ -182,7 +182,7 @@
             TxtDni.BorderStyle = BorderStyle.None;
             TxtDni.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             TxtDni.ForeColor = SystemColors.ButtonFace;
-            TxtDni.Location = new Point(258, 159);
+            TxtDni.Location = new Point(21, 203);
             TxtDni.Name = "TxtDni";
             TxtDni.Size = new Size(194, 19);
             TxtDni.TabIndex = 120;
@@ -193,7 +193,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(258, 138);
+            label3.Location = new Point(21, 182);
             label3.Name = "label3";
             label3.Size = new Size(44, 18);
             label3.TabIndex = 119;
@@ -205,7 +205,7 @@
             TxtDomicilio.BorderStyle = BorderStyle.None;
             TxtDomicilio.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             TxtDomicilio.ForeColor = SystemColors.ButtonFace;
-            TxtDomicilio.Location = new Point(23, 259);
+            TxtDomicilio.Location = new Point(23, 308);
             TxtDomicilio.Name = "TxtDomicilio";
             TxtDomicilio.Size = new Size(429, 19);
             TxtDomicilio.TabIndex = 122;
@@ -216,7 +216,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(23, 238);
+            label4.Location = new Point(23, 287);
             label4.Name = "label4";
             label4.Size = new Size(86, 18);
             label4.TabIndex = 121;
@@ -228,7 +228,7 @@
             TxtEmail.BorderStyle = BorderStyle.None;
             TxtEmail.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             TxtEmail.ForeColor = SystemColors.ButtonFace;
-            TxtEmail.Location = new Point(23, 308);
+            TxtEmail.Location = new Point(23, 357);
             TxtEmail.Name = "TxtEmail";
             TxtEmail.Size = new Size(429, 19);
             TxtEmail.TabIndex = 126;
@@ -239,7 +239,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(23, 287);
+            label6.Location = new Point(23, 336);
             label6.Name = "label6";
             label6.Size = new Size(55, 18);
             label6.TabIndex = 125;
@@ -258,7 +258,7 @@
             BtnAgregarProvincia.IconColor = Color.Black;
             BtnAgregarProvincia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnAgregarProvincia.IconSize = 30;
-            BtnAgregarProvincia.Location = new Point(182, 360);
+            BtnAgregarProvincia.Location = new Point(182, 409);
             BtnAgregarProvincia.Name = "BtnAgregarProvincia";
             BtnAgregarProvincia.Size = new Size(35, 28);
             BtnAgregarProvincia.TabIndex = 131;
@@ -270,7 +270,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(258, 340);
+            label7.Location = new Point(258, 389);
             label7.Name = "label7";
             label7.Size = new Size(90, 18);
             label7.TabIndex = 130;
@@ -281,7 +281,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.ButtonFace;
-            label8.Location = new Point(23, 340);
+            label8.Location = new Point(23, 389);
             label8.Name = "label8";
             label8.Size = new Size(86, 18);
             label8.TabIndex = 129;
@@ -295,7 +295,7 @@
             ComboLocalidad.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ComboLocalidad.ForeColor = SystemColors.ButtonFace;
             ComboLocalidad.FormattingEnabled = true;
-            ComboLocalidad.Location = new Point(258, 361);
+            ComboLocalidad.Location = new Point(258, 410);
             ComboLocalidad.Name = "ComboLocalidad";
             ComboLocalidad.Size = new Size(153, 26);
             ComboLocalidad.TabIndex = 128;
@@ -309,7 +309,7 @@
             ComboProvincia.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ComboProvincia.ForeColor = SystemColors.ButtonFace;
             ComboProvincia.FormattingEnabled = true;
-            ComboProvincia.Location = new Point(23, 361);
+            ComboProvincia.Location = new Point(23, 410);
             ComboProvincia.Name = "ComboProvincia";
             ComboProvincia.Size = new Size(150, 26);
             ComboProvincia.TabIndex = 127;
@@ -328,7 +328,7 @@
             BtnAgregarLocalidad.IconColor = Color.Black;
             BtnAgregarLocalidad.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnAgregarLocalidad.IconSize = 30;
-            BtnAgregarLocalidad.Location = new Point(417, 361);
+            BtnAgregarLocalidad.Location = new Point(417, 410);
             BtnAgregarLocalidad.Name = "BtnAgregarLocalidad";
             BtnAgregarLocalidad.Size = new Size(35, 28);
             BtnAgregarLocalidad.TabIndex = 134;
@@ -423,7 +423,7 @@
             BtnGuardar.IconColor = Color.Black;
             BtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             BtnGuardar.IconSize = 35;
-            BtnGuardar.Location = new Point(452, 482);
+            BtnGuardar.Location = new Point(450, 504);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(105, 40);
             BtnGuardar.TabIndex = 142;
@@ -443,7 +443,7 @@
             BtnCancelar.IconColor = Color.Black;
             BtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnCancelar.IconSize = 35;
-            BtnCancelar.Location = new Point(23, 482);
+            BtnCancelar.Location = new Point(21, 504);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(105, 40);
             BtnCancelar.TabIndex = 141;
@@ -463,7 +463,7 @@
             BtnContinuar.IconColor = Color.Black;
             BtnContinuar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnContinuar.IconSize = 35;
-            BtnContinuar.Location = new Point(563, 482);
+            BtnContinuar.Location = new Point(562, 504);
             BtnContinuar.Name = "BtnContinuar";
             BtnContinuar.Size = new Size(103, 40);
             BtnContinuar.TabIndex = 140;
@@ -473,7 +473,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.OrangeDivider;
-            pictureBox2.Location = new Point(21, 460);
+            pictureBox2.Location = new Point(19, 482);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(645, 10);
             pictureBox2.TabIndex = 143;
@@ -484,7 +484,7 @@
             label16.AutoSize = true;
             label16.Font = new Font("Lucida Sans", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label16.ForeColor = Color.Gold;
-            label16.Location = new Point(23, 435);
+            label16.Location = new Point(21, 457);
             label16.Name = "label16";
             label16.Size = new Size(97, 22);
             label16.TabIndex = 144;
@@ -495,7 +495,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 38, 38);
-            ClientSize = new Size(688, 534);
+            ClientSize = new Size(688, 557);
             Controls.Add(label16);
             Controls.Add(pictureBox2);
             Controls.Add(BtnGuardar);
@@ -533,6 +533,8 @@
             Name = "CreateAccount";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateAccount";
+            Activated += CreateAccount_Activated;
+            Load += CreateAccount_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

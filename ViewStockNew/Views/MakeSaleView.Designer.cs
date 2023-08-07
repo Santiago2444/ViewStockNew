@@ -43,8 +43,6 @@
             GridVentaDetalle = new DataGridView();
             LblCantidadCarrito = new Label();
             label15 = new Label();
-            pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
             label9 = new Label();
             pictureBox9 = new PictureBox();
             PctUser = new PictureBox();
@@ -53,8 +51,6 @@
             PctProducto = new PictureBox();
             LblCargoUser = new Label();
             LblNombreUser = new Label();
-            iconButton16 = new FontAwesome.Sharp.IconButton();
-            iconButton15 = new FontAwesome.Sharp.IconButton();
             BtnGuardarVenta = new FontAwesome.Sharp.IconButton();
             BtnCancelar = new FontAwesome.Sharp.IconButton();
             BtnGuardarDeuda = new FontAwesome.Sharp.IconButton();
@@ -107,8 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             TabCarrito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridVentaDetalle).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PctUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
@@ -213,14 +207,10 @@
             // 
             TabCarrito.BackColor = Color.FromArgb(38, 38, 38);
             TabCarrito.Controls.Add(GridVentaDetalle);
-            TabCarrito.Controls.Add(LblCantidadCarrito);
-            TabCarrito.Controls.Add(label15);
-            TabCarrito.Controls.Add(pictureBox1);
-            TabCarrito.Controls.Add(pictureBox3);
             TabCarrito.Location = new Point(4, 29);
             TabCarrito.Name = "TabCarrito";
             TabCarrito.Padding = new Padding(3);
-            TabCarrito.Size = new Size(766, 482);
+            TabCarrito.Size = new Size(766, 429);
             TabCarrito.TabIndex = 1;
             TabCarrito.Text = "Carrito";
             // 
@@ -243,7 +233,7 @@
             GridVentaDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             GridVentaDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridVentaDetalle.Cursor = Cursors.Hand;
-            GridVentaDetalle.Location = new Point(6, 55);
+            GridVentaDetalle.Location = new Point(6, 6);
             GridVentaDetalle.Name = "GridVentaDetalle";
             GridVentaDetalle.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -255,7 +245,7 @@
             GridVentaDetalle.RowsDefaultCellStyle = dataGridViewCellStyle5;
             GridVentaDetalle.RowTemplate.Height = 25;
             GridVentaDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            GridVentaDetalle.Size = new Size(754, 424);
+            GridVentaDetalle.Size = new Size(751, 417);
             GridVentaDetalle.TabIndex = 195;
             GridVentaDetalle.CellDoubleClick += GridProductos_CellDoubleClick;
             GridVentaDetalle.DataBindingComplete += GridVentaDetalle_DataBindingComplete;
@@ -263,9 +253,10 @@
             // LblCantidadCarrito
             // 
             LblCantidadCarrito.AutoSize = true;
+            LblCantidadCarrito.BackColor = SystemColors.Control;
             LblCantidadCarrito.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LblCantidadCarrito.ForeColor = SystemColors.ButtonFace;
-            LblCantidadCarrito.Location = new Point(317, 18);
+            LblCantidadCarrito.ForeColor = SystemColors.ActiveCaptionText;
+            LblCantidadCarrito.Location = new Point(412, 214);
             LblCantidadCarrito.Name = "LblCantidadCarrito";
             LblCantidadCarrito.Size = new Size(18, 18);
             LblCantidadCarrito.TabIndex = 183;
@@ -274,31 +265,14 @@
             // label15
             // 
             label15.AutoSize = true;
+            label15.BackColor = SystemColors.Control;
             label15.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.ForeColor = Color.Gold;
-            label15.Location = new Point(12, 18);
+            label15.ForeColor = SystemColors.ActiveCaptionText;
+            label15.Location = new Point(209, 214);
             label15.Name = "label15";
-            label15.Size = new Size(299, 18);
+            label15.Size = new Size(197, 18);
             label15.TabIndex = 182;
-            label15.Text = "Cantidad de productos en el carrito:";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.OrangeDivider;
-            pictureBox1.Location = new Point(6, 39);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(716, 10);
-            pictureBox1.TabIndex = 181;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.OrangeDivider;
-            pictureBox3.Location = new Point(52, 39);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(708, 10);
-            pictureBox3.TabIndex = 184;
-            pictureBox3.TabStop = false;
+            label15.Text = "Productos en el carrito:";
             // 
             // label9
             // 
@@ -383,44 +357,6 @@
             LblNombreUser.Size = new Size(76, 18);
             LblNombreUser.TabIndex = 122;
             LblNombreUser.Text = "Nombre:";
-            // 
-            // iconButton16
-            // 
-            iconButton16.BackColor = Color.Transparent;
-            iconButton16.Cursor = Cursors.Hand;
-            iconButton16.FlatAppearance.BorderSize = 0;
-            iconButton16.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            iconButton16.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            iconButton16.FlatStyle = FlatStyle.Flat;
-            iconButton16.ForeColor = SystemColors.ActiveCaptionText;
-            iconButton16.IconChar = FontAwesome.Sharp.IconChar.Info;
-            iconButton16.IconColor = SystemColors.ButtonFace;
-            iconButton16.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton16.IconSize = 22;
-            iconButton16.Location = new Point(1018, 426);
-            iconButton16.Name = "iconButton16";
-            iconButton16.Size = new Size(35, 28);
-            iconButton16.TabIndex = 161;
-            iconButton16.UseVisualStyleBackColor = false;
-            // 
-            // iconButton15
-            // 
-            iconButton15.BackColor = Color.Transparent;
-            iconButton15.Cursor = Cursors.Hand;
-            iconButton15.FlatAppearance.BorderSize = 0;
-            iconButton15.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            iconButton15.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            iconButton15.FlatStyle = FlatStyle.Flat;
-            iconButton15.ForeColor = SystemColors.ActiveCaptionText;
-            iconButton15.IconChar = FontAwesome.Sharp.IconChar.Info;
-            iconButton15.IconColor = SystemColors.ButtonFace;
-            iconButton15.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton15.IconSize = 22;
-            iconButton15.Location = new Point(1246, 425);
-            iconButton15.Name = "iconButton15";
-            iconButton15.Size = new Size(35, 28);
-            iconButton15.TabIndex = 160;
-            iconButton15.UseVisualStyleBackColor = false;
             // 
             // BtnGuardarVenta
             // 
@@ -914,6 +850,7 @@
             // 
             BtnRealizarOtraVenta.BackColor = Color.DodgerBlue;
             BtnRealizarOtraVenta.Cursor = Cursors.Hand;
+            BtnRealizarOtraVenta.Enabled = false;
             BtnRealizarOtraVenta.FlatAppearance.BorderSize = 0;
             BtnRealizarOtraVenta.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
             BtnRealizarOtraVenta.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
@@ -1217,7 +1154,9 @@
             BackColor = Color.FromArgb(38, 38, 38);
             ClientSize = new Size(1324, 685);
             Controls.Add(RadioUnidad);
+            Controls.Add(LblCantidadCarrito);
             Controls.Add(RadioBulto);
+            Controls.Add(label15);
             Controls.Add(BtnTerminarVenta);
             Controls.Add(NumCantidad);
             Controls.Add(BtnQuitar);
@@ -1234,8 +1173,6 @@
             Controls.Add(BtnRecargarData);
             Controls.Add(ComboSpec);
             Controls.Add(BtnRealizarOtraVenta);
-            Controls.Add(iconButton16);
-            Controls.Add(iconButton15);
             Controls.Add(BtnGuardarVenta);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnGuardarDeuda);
@@ -1286,10 +1223,7 @@
             ((System.ComponentModel.ISupportInitialize)GridProductos).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             TabCarrito.ResumeLayout(false);
-            TabCarrito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridVentaDetalle).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)PctUser).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
@@ -1315,8 +1249,6 @@
         private PictureBox PctProducto;
         private Label LblCargoUser;
         private Label LblNombreUser;
-        private FontAwesome.Sharp.IconButton iconButton16;
-        private FontAwesome.Sharp.IconButton iconButton15;
         private FontAwesome.Sharp.IconButton BtnGuardarVenta;
         private FontAwesome.Sharp.IconButton BtnCancelar;
         private FontAwesome.Sharp.IconButton BtnGuardarDeuda;
@@ -1347,7 +1279,6 @@
         private FontAwesome.Sharp.IconButton BtnRealizarOtraVenta;
         private Label LblCantidadCarrito;
         private Label label15;
-        private PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton BtnAgregar;
         private CheckBox CheckTipo;
         private CheckBox CheckMarca;
@@ -1361,7 +1292,6 @@
         private Label label2;
         private FontAwesome.Sharp.IconButton FechaDesde;
         private FontAwesome.Sharp.IconButton BtnBuscar;
-        private PictureBox pictureBox3;
         private NumericUpDown NumCantidad;
         private DataGridView GridVentaDetalle;
         private PictureBox pictureBox8;

@@ -40,6 +40,7 @@ namespace ViewStockNew.Views
         private decimal Ganancia;
         private decimal _Descuento;
         private decimal Descuento;
+        private bool? remito = null;
 
         public CreateProductView(IUnitOfWork unitOfWork, bool Editando)
         {
@@ -426,7 +427,7 @@ namespace ViewStockNew.Views
                             MarcaId = (int)ComboMarca.SelectedValue,
                             SPECId = (int)ComboSPEC.SelectedValue,
                             ProveedorId = (int?)ComboProveedor.SelectedValue,
-                            Detalles = TxtDetalles.Text,
+                            Detalles = TxtDetalles.Text.Length < 1 ? "null" : TxtDetalles.Text,
                             PrecioBulto = (decimal)_PrecioBulto,
                             CantidadBulto = (int)_Cantidad,
                             PrecioUnidad = (decimal)_PrecioUnidad,
@@ -459,7 +460,7 @@ namespace ViewStockNew.Views
                                     // Al realizar un cambio en la lista de datos, es necesario realizar otra consulta a la
                                     // base de datos
                                     ClasesCompartidas.productosList.DataSource = await unitOfWork.ProductoRepository.GetAllAsync(include: c => c.Include(c => c.TipoProducto).Include(c => c.Marca).Include(c => c.SPEC).Include(c => c.Usuario).Include(c => c.Proveedor), filter: v => v.Visible.Equals(true));
-                                    MessageBox.Show($"¡El producto se ha creado con éxito!(3)", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show($"¡El producto se ha creado con éxito!", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     //
                                     if (ClasesCompartidas.ProductoId != null)
                                         Close();
@@ -586,7 +587,7 @@ namespace ViewStockNew.Views
                             MarcaId = (int)ComboMarca.SelectedValue,
                             SPECId = (int)ComboSPEC.SelectedValue,
                             ProveedorId = (int?)ComboProveedor.SelectedValue,
-                            Detalles = TxtDetalles.Text,
+                            Detalles = TxtDetalles.Text.Length < 1 ? "null" : TxtDetalles.Text,
                             PrecioBulto = Convert.ToDecimal(TxtPrecioBulto.Text),
                             CantidadBulto = Convert.ToInt32(TxtCantidad.Text),
                             PrecioUnidad = Convert.ToDecimal(TxtPrecioUnidad.Text),
@@ -614,7 +615,7 @@ namespace ViewStockNew.Views
                                 {
                                     unitOfWork.ProductoRepository.Add(producto);
                                     unitOfWork.Save();
-                                    ClasesCompartidas.ProductoId = producto.Id;
+                                    ClasesCompartidas.ProductoId = remito != null ? producto.Id : null;
                                     auxModify = 0;
                                     //
                                     // Al realizar un cambio en la lista de datos, es necesario realizar otra consulta a la
@@ -765,6 +766,8 @@ namespace ViewStockNew.Views
             var createDataView = new CreateDataView(dataSend, unitOfWork);
             createDataView.ShowDialog();
             CargarComboTipo();
+            //
+            ClasesCompartidas.TipoNuevo = null;
         }
 
         private void BtnAgregarMarca_Click(object sender, EventArgs e)
@@ -774,6 +777,8 @@ namespace ViewStockNew.Views
             var createDataView = new CreateDataView(dataSend, unitOfWork);
             createDataView.ShowDialog();
             CargarComboMarca();
+            //
+            ClasesCompartidas.MarcaNueva = null;
         }
 
         private void BtnAgregarSPEC_Click(object sender, EventArgs e)
@@ -783,6 +788,8 @@ namespace ViewStockNew.Views
             var createDataView = new CreateDataView(dataSend, unitOfWork);
             createDataView.ShowDialog();
             CargarComboSPEC();
+            //
+            ClasesCompartidas.SpecNuevo = null;
         }
 
         private void BtnAgregarProveedor_Click(object sender, EventArgs e)
@@ -792,6 +799,8 @@ namespace ViewStockNew.Views
             var createProveedor = new CreateProveedorView(unitOfWork, editando);
             createProveedor.ShowDialog();
             CargarComboProveedor();
+            //
+            ClasesCompartidas.ProveedorNuevo = null;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -840,6 +849,29 @@ namespace ViewStockNew.Views
             _SpecId = productoEdit.SPECId;
             _Detalles = productoEdit.Detalles;
 
+        }
+
+        public CreateProductView(IUnitOfWork unitOfWork, bool Editando, bool remito) : this(unitOfWork, Editando)
+        {
+            InitializeComponent();
+            //
+            this.unitOfWork = unitOfWork;
+            this.editando = Editando;
+            this.remito = remito;
+            //
+            CargarComboTipo();
+            CargarComboMarca();
+            CargarComboProveedor();
+            CargarComboSPEC();
+            BtnEliminarImagen.Enabled = false;
+            //
+            var ganancia = unitOfWork.PorcentajeGananciaRepository.GetByID(1);
+            Ganancia = ganancia.Porcentaje;
+            TxtPorcetaje.Text = ganancia.Porcentaje.ToString("0.00");
+            //
+            var descuento = unitOfWork.PorcentajeGananciaRepository.GetByID(2);
+            Descuento = descuento.Porcentaje;
+            TxtDescuento.Text = descuento.Porcentaje.ToString("0.00");
         }
 
         private void BtnSubirImagen_Click(object sender, EventArgs e)

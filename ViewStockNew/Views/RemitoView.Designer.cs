@@ -698,6 +698,7 @@
             // 
             BtnImprimir.BackColor = Color.DarkOrange;
             BtnImprimir.Cursor = Cursors.Hand;
+            BtnImprimir.Enabled = false;
             BtnImprimir.FlatAppearance.BorderSize = 0;
             BtnImprimir.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
             BtnImprimir.FlatAppearance.MouseOverBackColor = Color.Gold;

@@ -215,7 +215,7 @@
             TxtContraseña.ForeColor = SystemColors.ButtonFace;
             TxtContraseña.Location = new Point(27, 264);
             TxtContraseña.Name = "TxtContraseña";
-            TxtContraseña.PasswordChar = '♥';
+            TxtContraseña.PasswordChar = '♦';
             TxtContraseña.Size = new Size(409, 19);
             TxtContraseña.TabIndex = 124;
             TxtContraseña.TextChanged += TxtContraseña_TextChanged;
@@ -325,7 +325,7 @@
             TxtRepeatPassword.ForeColor = SystemColors.ButtonFace;
             TxtRepeatPassword.Location = new Point(27, 315);
             TxtRepeatPassword.Name = "TxtRepeatPassword";
-            TxtRepeatPassword.PasswordChar = '♥';
+            TxtRepeatPassword.PasswordChar = '♦';
             TxtRepeatPassword.Size = new Size(409, 19);
             TxtRepeatPassword.TabIndex = 136;
             TxtRepeatPassword.TextChanged += TxtRepeatPassword_TextChanged;

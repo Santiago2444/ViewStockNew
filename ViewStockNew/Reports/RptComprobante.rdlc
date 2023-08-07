@@ -1374,6 +1374,10 @@
           <DataField>Bulto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Usuario">
+          <DataField>Usuario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>ViewStockDataSet</rd:DataSetName>

@@ -57,8 +57,6 @@
             BtnGuardar = new FontAwesome.Sharp.IconButton();
             BtnCancelar = new FontAwesome.Sharp.IconButton();
             BtnContinuar = new FontAwesome.Sharp.IconButton();
-            BtnRefresh = new FontAwesome.Sharp.IconButton();
-            CboTraerDatos = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -462,46 +460,12 @@
             BtnContinuar.UseVisualStyleBackColor = false;
             BtnContinuar.Click += BtnContinuar_Click;
             // 
-            // BtnRefresh
-            // 
-            BtnRefresh.BackColor = Color.DarkOrange;
-            BtnRefresh.Cursor = Cursors.Hand;
-            BtnRefresh.FlatAppearance.BorderSize = 0;
-            BtnRefresh.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
-            BtnRefresh.FlatAppearance.MouseOverBackColor = Color.Gold;
-            BtnRefresh.FlatStyle = FlatStyle.Flat;
-            BtnRefresh.ForeColor = SystemColors.ActiveCaptionText;
-            BtnRefresh.IconChar = FontAwesome.Sharp.IconChar.Rotate;
-            BtnRefresh.IconColor = Color.Black;
-            BtnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnRefresh.IconSize = 30;
-            BtnRefresh.Location = new Point(469, 409);
-            BtnRefresh.Name = "BtnRefresh";
-            BtnRefresh.Size = new Size(35, 28);
-            BtnRefresh.TabIndex = 164;
-            BtnRefresh.UseVisualStyleBackColor = false;
-            // 
-            // CboTraerDatos
-            // 
-            CboTraerDatos.BackColor = Color.FromArgb(55, 55, 55);
-            CboTraerDatos.Cursor = Cursors.Hand;
-            CboTraerDatos.FlatStyle = FlatStyle.Flat;
-            CboTraerDatos.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            CboTraerDatos.ForeColor = SystemColors.ButtonFace;
-            CboTraerDatos.FormattingEnabled = true;
-            CboTraerDatos.Location = new Point(255, 410);
-            CboTraerDatos.Name = "CboTraerDatos";
-            CboTraerDatos.Size = new Size(208, 26);
-            CboTraerDatos.TabIndex = 163;
-            // 
             // CreateProveedorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 38, 38);
             ClientSize = new Size(758, 463);
-            Controls.Add(BtnRefresh);
-            Controls.Add(CboTraerDatos);
             Controls.Add(BtnGuardar);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnContinuar);
@@ -577,7 +541,5 @@
         private FontAwesome.Sharp.IconButton BtnGuardar;
         private FontAwesome.Sharp.IconButton BtnCancelar;
         private FontAwesome.Sharp.IconButton BtnContinuar;
-        private FontAwesome.Sharp.IconButton BtnRefresh;
-        private ComboBox CboTraerDatos;
     }
 }

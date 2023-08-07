@@ -879,7 +879,7 @@ namespace ViewStockNew.Views
                 Debug.Print(ex.InnerException?.Message);
                 MessageBox.Show(ex.Message);
             }
-            ClasesCompartidas.PagoId = pago.Id;
+            ClasesCompartidas.SaldoId = pago.Id;
             //
             ClasesCompartidas.PagosList.DataSource = await unitOfWork.PagoRepository.GetAllAsync(include: q => q.Include(q => q.Cuenta).Include(q => q.Usuario), filter: q => q.CuentaId.Equals(cuentaId));
             ClasesCompartidas.cuentasList.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(true));
@@ -1011,8 +1011,6 @@ namespace ViewStockNew.Views
             //
             foreach (Producto itemProducto in productoList)
             {
-                for (int p = 0; p < rowsProductCount; p++)
-                {
                     if (Convert.ToInt32(itemProducto.Carrito) > 0)
                     {
                         IdProducto = (int)itemProducto.Id;
@@ -1040,7 +1038,6 @@ namespace ViewStockNew.Views
                             MessageBox.Show(ex.Message);
                         }
                     }
-                }
             }
             //
             var oldCodigoVenta = unitOfWork.CodigoVentaRepository.GetByID(1);
@@ -1108,7 +1105,7 @@ namespace ViewStockNew.Views
                     var ventaDetalle = unitOfWork.VentaDetalleRepository.GetByID(IdVentaDetalle);
                     ventaDetalle.Pagado = "No";
                     ventaDetalle.CuentaId = cuentaId;
-                    ventaDetalle.UsuarioId = ClasesCompartidas.UserId;
+                    ventaDetalle.UsuarioId = (int)ClasesCompartidas.UserId;
                     ventaDetalle.FechaDePago = DateTime.Now;
                     ventaDetalle.CodigoDeVenta = _codigoVenta;
                     ventaDetalle.VentaId = VentaId;
@@ -1160,6 +1157,7 @@ namespace ViewStockNew.Views
                 MessageBox.Show(ex.Message);
             }
             //
+            ClasesCompartidas.cuentasList.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(true));
             ClasesCompartidas.productosList.DataSource = await unitOfWork.ProductoRepository.GetAllAsync(include: c => c.Include(c => c.TipoProducto).Include(c => c.Marca).Include(c => c.SPEC).Include(c => c.Usuario).Include(c => c.Proveedor), filter: v => v.Visible.Equals(true));
             ClasesCompartidas.VentaDetalle.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor), filter: q => q.Pagado == "Carrito");
             //

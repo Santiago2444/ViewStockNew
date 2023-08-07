@@ -115,7 +115,7 @@
             TxtPassword.ForeColor = SystemColors.ControlLightLight;
             TxtPassword.Location = new Point(45, 222);
             TxtPassword.Name = "TxtPassword";
-            TxtPassword.PasswordChar = '♥';
+            TxtPassword.PasswordChar = '♦';
             TxtPassword.Size = new Size(362, 26);
             TxtPassword.TabIndex = 93;
             TxtPassword.Visible = false;

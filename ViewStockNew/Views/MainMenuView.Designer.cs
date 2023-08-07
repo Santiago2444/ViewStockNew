@@ -32,12 +32,11 @@
             IcoItemVentas = new FontAwesome.Sharp.IconMenuItem();
             RealizarVentaMenuItem = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
-            IcoMenuItemUser = new FontAwesome.Sharp.IconMenuItem();
             IcoItemProductos = new FontAwesome.Sharp.IconMenuItem();
+            IcoMenuItemUser = new FontAwesome.Sharp.IconMenuItem();
             IcoMenuItemCuentas = new FontAwesome.Sharp.IconMenuItem();
             IcoMenuItemProveedor = new FontAwesome.Sharp.IconMenuItem();
             ProductosList = new FontAwesome.Sharp.IconMenuItem();
-            iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem5 = new FontAwesome.Sharp.IconMenuItem();
             MenuRemitoList = new FontAwesome.Sharp.IconMenuItem();
             MenuRealizarRemito = new FontAwesome.Sharp.IconMenuItem();
@@ -56,7 +55,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.FromArgb(30, 30, 30);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { IcoItemVentas, IcoMenuItemUser, IcoItemProductos, IcoMenuItemCuentas, IcoMenuItemProveedor, IcoItemExit });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { IcoItemVentas, IcoItemProductos, IcoMenuItemUser, IcoMenuItemCuentas, IcoMenuItemProveedor, IcoItemExit });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 2, 0, 2);
@@ -102,6 +101,19 @@
             iconMenuItem2.Text = "Ventas Realizadas";
             iconMenuItem2.Click += iconMenuItem2_Click;
             // 
+            // IcoItemProductos
+            // 
+            IcoItemProductos.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            IcoItemProductos.ForeColor = SystemColors.ControlLight;
+            IcoItemProductos.IconChar = FontAwesome.Sharp.IconChar.PizzaSlice;
+            IcoItemProductos.IconColor = Color.Gold;
+            IcoItemProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            IcoItemProductos.IconSize = 30;
+            IcoItemProductos.Name = "IcoItemProductos";
+            IcoItemProductos.Size = new Size(119, 22);
+            IcoItemProductos.Text = "Productos";
+            IcoItemProductos.Click += IcoItemProductos_Click;
+            // 
             // IcoMenuItemUser
             // 
             IcoMenuItemUser.BackColor = Color.FromArgb(30, 30, 30);
@@ -115,19 +127,6 @@
             IcoMenuItemUser.Size = new Size(108, 22);
             IcoMenuItemUser.Text = "Usuarios";
             IcoMenuItemUser.Click += IcoMenuItemUser_Click;
-            // 
-            // IcoItemProductos
-            // 
-            IcoItemProductos.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            IcoItemProductos.ForeColor = SystemColors.ControlLight;
-            IcoItemProductos.IconChar = FontAwesome.Sharp.IconChar.PizzaSlice;
-            IcoItemProductos.IconColor = Color.Gold;
-            IcoItemProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            IcoItemProductos.IconSize = 30;
-            IcoItemProductos.Name = "IcoItemProductos";
-            IcoItemProductos.Size = new Size(119, 22);
-            IcoItemProductos.Text = "Productos";
-            IcoItemProductos.Click += IcoItemProductos_Click;
             // 
             // IcoMenuItemCuentas
             // 
@@ -144,7 +143,7 @@
             // 
             // IcoMenuItemProveedor
             // 
-            IcoMenuItemProveedor.DropDownItems.AddRange(new ToolStripItem[] { ProductosList, iconMenuItem4, iconMenuItem5 });
+            IcoMenuItemProveedor.DropDownItems.AddRange(new ToolStripItem[] { ProductosList, iconMenuItem5 });
             IcoMenuItemProveedor.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             IcoMenuItemProveedor.ForeColor = SystemColors.ControlLight;
             IcoMenuItemProveedor.IconChar = FontAwesome.Sharp.IconChar.Truck;
@@ -168,18 +167,6 @@
             ProductosList.Text = "Lista de Proveedores";
             ProductosList.Click += ProductosList_Click;
             // 
-            // iconMenuItem4
-            // 
-            iconMenuItem4.BackColor = Color.FromArgb(30, 30, 30);
-            iconMenuItem4.ForeColor = SystemColors.ControlLight;
-            iconMenuItem4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconMenuItem4.IconColor = Color.Gold;
-            iconMenuItem4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconMenuItem4.Name = "iconMenuItem4";
-            iconMenuItem4.Size = new Size(249, 22);
-            iconMenuItem4.Text = "Crear Proveedor";
-            iconMenuItem4.Click += iconMenuItem4_Click;
-            // 
             // iconMenuItem5
             // 
             iconMenuItem5.BackColor = Color.FromArgb(30, 30, 30);
@@ -202,6 +189,7 @@
             MenuRemitoList.Name = "MenuRemitoList";
             MenuRemitoList.Size = new Size(213, 22);
             MenuRemitoList.Text = "Lista de Remitos";
+            MenuRemitoList.Click += MenuRemitoList_Click;
             // 
             // MenuRealizarRemito
             // 
@@ -277,16 +265,16 @@
             IcoBtnCrearUsuario.BackColor = Color.Transparent;
             IcoBtnCrearUsuario.Cursor = Cursors.Hand;
             IcoBtnCrearUsuario.FlatAppearance.BorderSize = 0;
-            IcoBtnCrearUsuario.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
-            IcoBtnCrearUsuario.FlatAppearance.MouseOverBackColor = Color.Gold;
+            IcoBtnCrearUsuario.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 30, 30);
+            IcoBtnCrearUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
             IcoBtnCrearUsuario.FlatStyle = FlatStyle.Flat;
             IcoBtnCrearUsuario.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             IcoBtnCrearUsuario.ForeColor = Color.Black;
             IcoBtnCrearUsuario.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
-            IcoBtnCrearUsuario.IconColor = Color.Black;
+            IcoBtnCrearUsuario.IconColor = Color.Orange;
             IcoBtnCrearUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             IcoBtnCrearUsuario.IconSize = 50;
-            IcoBtnCrearUsuario.Location = new Point(125, 45);
+            IcoBtnCrearUsuario.Location = new Point(248, 45);
             IcoBtnCrearUsuario.Name = "IcoBtnCrearUsuario";
             IcoBtnCrearUsuario.Size = new Size(66, 56);
             IcoBtnCrearUsuario.TabIndex = 195;
@@ -299,16 +287,16 @@
             IcoBtnProducto.BackColor = Color.Transparent;
             IcoBtnProducto.Cursor = Cursors.Hand;
             IcoBtnProducto.FlatAppearance.BorderSize = 0;
-            IcoBtnProducto.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 30, 30);
-            IcoBtnProducto.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            IcoBtnProducto.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
+            IcoBtnProducto.FlatAppearance.MouseOverBackColor = Color.Gold;
             IcoBtnProducto.FlatStyle = FlatStyle.Flat;
             IcoBtnProducto.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
             IcoBtnProducto.ForeColor = Color.Black;
-            IcoBtnProducto.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            IcoBtnProducto.IconColor = Color.Orange;
+            IcoBtnProducto.IconChar = FontAwesome.Sharp.IconChar.PizzaSlice;
+            IcoBtnProducto.IconColor = Color.Black;
             IcoBtnProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             IcoBtnProducto.IconSize = 50;
-            IcoBtnProducto.Location = new Point(236, 45);
+            IcoBtnProducto.Location = new Point(134, 45);
             IcoBtnProducto.Name = "IcoBtnProducto";
             IcoBtnProducto.Size = new Size(66, 56);
             IcoBtnProducto.TabIndex = 196;
@@ -330,7 +318,7 @@
             IcoBtnCuenta.IconColor = Color.Orange;
             IcoBtnCuenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             IcoBtnCuenta.IconSize = 50;
-            IcoBtnCuenta.Location = new Point(346, 45);
+            IcoBtnCuenta.Location = new Point(352, 45);
             IcoBtnCuenta.Name = "IcoBtnCuenta";
             IcoBtnCuenta.Size = new Size(66, 56);
             IcoBtnCuenta.TabIndex = 197;
@@ -412,7 +400,6 @@
         private FontAwesome.Sharp.IconMenuItem RealizarVentaMenuItem;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem2;
         private FontAwesome.Sharp.IconMenuItem ProductosList;
-        private FontAwesome.Sharp.IconMenuItem iconMenuItem4;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem5;
         private FontAwesome.Sharp.IconMenuItem MenuRemitoList;
         private FontAwesome.Sharp.IconMenuItem MenuRealizarRemito;

@@ -16,6 +16,7 @@
     <None Remove="Reports\RptProductos.rdlc" />
     <None Remove="Reports\RptProveedores.rdlc" />
     <None Remove="Reports\RptProvincias.rdlc" />
+    <None Remove="Reports\RptSaldo.rdlc" />
     <None Remove="Reports\RptTicket.rdlc" />
     <None Remove="Reports\RptUsuarios.rdlc" />
   </ItemGroup>
@@ -36,6 +37,7 @@
     <EmbeddedResource Include="Reports\RptProvincias.rdlc">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptSaldo.rdlc" />
     <EmbeddedResource Include="Reports\RptTicket.rdlc" />
     <EmbeddedResource Include="Reports\RptUsuarios.rdlc" />
   </ItemGroup>

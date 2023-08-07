@@ -35,7 +35,7 @@ namespace WebStock.Data
             //
             modelBuilder.Entity<TipoProducto>(entity =>
             {
-                entity.ToTable("tipoProductoTwos");
+                entity.ToTable("tipoProductos");
             });
             //
             modelBuilder.Entity<SPEC>(entity =>
