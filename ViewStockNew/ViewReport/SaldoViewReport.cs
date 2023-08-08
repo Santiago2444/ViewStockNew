@@ -38,16 +38,7 @@ namespace ViewStockNew.ViewReport
 
         private void SaldoViewReport_Load(object sender, EventArgs e)
         {
-            PageSettings page = new PageSettings();
-            //
-            page.Margins.Left = 0;
-            page.Margins.Right = 0;
-            page.Margins.Top = 0;
-            page.Margins.Bottom = 0;
-            //
-            reporte.SetPageSettings(page);
-            //
-            CargarReporteAsync();
+             CargarReporteAsync();
 
         }
 

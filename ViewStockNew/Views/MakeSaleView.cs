@@ -1584,8 +1584,8 @@ namespace ViewStockNew.Views
                             //}
                         }
                     }
+                    var baseLoading = new BaseLoading(_ventaDetalle, _producto, unitOfWork, _repetido);
                 }
-                var baseLoading = new BaseLoading(_ventaDetalle, _producto, unitOfWork, _repetido);
             }
             //
             GetGridsProductsDatas();

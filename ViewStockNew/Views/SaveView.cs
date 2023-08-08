@@ -451,7 +451,7 @@ namespace ViewStockNew.Views
             {
                 var productoNewPrecio = unitOfWork.ProductoRepository.GetByID(idproducto);
                 //
-                var precioBulto = productoNewPrecio.PrecioUnidad * productoNewPrecio.CantidadBulto;
+                var precioBulto = productoNewPrecio.PVP * productoNewPrecio.CantidadBulto;
                 var precioNuevo = precioBulto - ((precioBulto * descuento) / 100);
                 //
                 productoNewPrecio.PrecioBulto = precioNuevo;
@@ -493,7 +493,7 @@ namespace ViewStockNew.Views
                     //
                     var productoNewPrecio = unitOfWork.ProductoRepository.GetByID(IdProducto);
                     //
-                    var precioBulto = productoNewPrecio.PrecioUnidad * productoNewPrecio.CantidadBulto;
+                    var precioBulto = productoNewPrecio.PVP * productoNewPrecio.CantidadBulto;
                     var precioNuevo = precioBulto - ((precioBulto * descuento) / 100);
                     //
                     productoNewPrecio.PrecioBulto = precioNuevo;
@@ -598,6 +598,8 @@ namespace ViewStockNew.Views
             //
             var cuentaActual = unitOfWork.CuentaRepository.GetByID(cuentaId);
             cuentaActual.Deuda = cuentaActual.Deuda - importe;
+            cuentaActual.Saldo = 0;
+            //
             try
             {
                 new ModelsValidator().Validate(cuentaActual);
@@ -988,6 +990,7 @@ namespace ViewStockNew.Views
             ClasesCompartidas.ComprasList.DataSource = await unitOfWork.VentaRepository.GetAllAsync(include: q => q.Include(q => q.Usuario).Include(q => q.Cuenta), filter: q => q.Estado == "Pagado" && q.CuentaId.Equals(cuentaId));
             ClasesCompartidas.ProductosList.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta), filter: q => q.Pagado == "Si" && q.CuentaId.Equals(cuentaId));
             ClasesCompartidas.PagosList.DataSource = await unitOfWork.PagoRepository.GetAllAsync(include: q => q.Include(q => q.Cuenta).Include(q => q.Usuario), filter: q => q.CuentaId.Equals(cuentaId));
+            ClasesCompartidas.cuentasList.DataSource = await unitOfWork.CuentaRepository.GetAllAsync(include: c => c.Include(c => c.Usuario).Include(c => c.Provincia).Include(c => c.Localidad), filter: v => v.Visible.Equals(true));
             //
             ClasesCompartidas.ComprasDeudaList.DataSource = await unitOfWork.VentaRepository.GetAllAsync(include: q => q.Include(q => q.Usuario).Include(q => q.Cuenta), filter: q => q.Estado == "Deuda" && q.CuentaId.Equals(cuentaId));
             ClasesCompartidas.ProductosDeudaList.DataSource = await unitOfWork.VentaDetalleRepository.GetAllAsync(include: q => q.Include(q => q.TipoProducto).Include(q => q.Marca).Include(q => q.SPEC).Include(q => q.Proveedor).Include(q => q.Usuario).Include(q => q.Cuenta), filter: q => q.Pagado == "No" && q.CuentaId.Equals(cuentaId));

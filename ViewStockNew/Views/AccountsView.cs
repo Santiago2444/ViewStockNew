@@ -580,6 +580,8 @@ namespace ViewStockNew.Views
                         //
                         BtnGuardarPago.Enabled = true;
                         BtnCancelarPago.Enabled = true;
+                        BtnCalcular.Enabled = false;
+                        RadioNinguno.Enabled = false;
                     }
                 }
             }
@@ -667,6 +669,8 @@ namespace ViewStockNew.Views
                     //
                     BtnGuardarPago.Enabled = true;
                     BtnCancelarPago.Enabled = true;
+                    BtnCalcular.Enabled = false;
+                    RadioNinguno.Enabled = false;
                 }
             }
             else if (RadioEspecífico.Checked == true)
@@ -728,6 +732,8 @@ namespace ViewStockNew.Views
                         //
                         BtnGuardarPago.Enabled = true;
                         BtnCancelarPago.Enabled = true;
+                        BtnCalcular.Enabled = false;
+                        RadioNinguno.Enabled = false;
                     }
                 }
             }
@@ -745,10 +751,17 @@ namespace ViewStockNew.Views
                     //
                     MessageBox.Show($"La deuda ha sido pagada con éxito!", "Pagado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //
-                    LblSaldo.ForeColor = SystemColors.ControlLightLight;
+                    BtnImprimir.Enabled = true;
+                    BtnTerminarPago.Enabled = true;
+                    BtnCalcular.Enabled = false;
+                    BtnGuardarPago.Enabled = false;
+                    BtnCancelarPago.Enabled = false;
                     //
-                    FillGrids();
-                    GetAccountData();
+                    RadioParcial.Enabled = false;
+                    RadioTotal.Enabled = false;
+                    RadioSaldo.Enabled = false;
+                    RadioEspecífico.Enabled = false;
+                    RadioNinguno.Enabled = false;
                 }
             }
             else if (RadioParcial.Checked == true)
@@ -772,10 +785,17 @@ namespace ViewStockNew.Views
                     //
                     MessageBox.Show($"La deuda ha sido pagada parcialmente con éxito!", "Pagado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //
-                    LblSaldo.ForeColor = SystemColors.ControlLightLight;
+                    BtnImprimir.Enabled = true;
+                    BtnTerminarPago.Enabled = true;
+                    BtnCalcular.Enabled = false;
+                    BtnGuardarPago.Enabled = false;
+                    BtnCancelarPago.Enabled = false;
                     //
-                    FillGrids();
-                    GetAccountData();
+                    RadioParcial.Enabled = false;
+                    RadioTotal.Enabled = false;
+                    RadioSaldo.Enabled = false;
+                    RadioEspecífico.Enabled = false;
+                    RadioNinguno.Enabled = false;
                 }
             }
             else if (RadioSaldo.Checked == true)
@@ -796,8 +816,17 @@ namespace ViewStockNew.Views
                         //
                         MessageBox.Show($"El Saldo de ${_dinero:0.00} ha sido añadido a la cuenta!", "Saldo Añadido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //
-                        GetAccountData();
-                        FillGrids();
+                        BtnImprimir.Enabled = true;
+                        BtnTerminarPago.Enabled = true;
+                        BtnCalcular.Enabled = false;
+                        BtnGuardarPago.Enabled = false;
+                        BtnCancelarPago.Enabled = false;
+                        //
+                        RadioParcial.Enabled = false;
+                        RadioTotal.Enabled = false;
+                        RadioSaldo.Enabled = false;
+                        RadioEspecífico.Enabled = false;
+                        RadioNinguno.Enabled = false;
                     }
                 }
             }
@@ -811,10 +840,17 @@ namespace ViewStockNew.Views
                     //
                     MessageBox.Show($"La deuda seleccionada ha sido pagada con éxito!", "Pagado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //
-                    LblSaldo.ForeColor = SystemColors.ControlLightLight;
+                    BtnImprimir.Enabled = true;
+                    BtnTerminarPago.Enabled = true;
+                    BtnCalcular.Enabled = false;
+                    BtnGuardarPago.Enabled = false;
+                    BtnCancelarPago.Enabled = false;
                     //
-                    FillGrids();
-                    GetAccountData();
+                    RadioParcial.Enabled = false;
+                    RadioTotal.Enabled = false;
+                    RadioSaldo.Enabled = false;
+                    RadioEspecífico.Enabled = false;
+                    RadioNinguno.Enabled = false;
                 }
             }
             //
@@ -864,12 +900,16 @@ namespace ViewStockNew.Views
                 //GridProductosDeudas.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
                 //GridProductosDeudas.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
                 //
-                if (SaldoDecimal > 0) 
+                if (SaldoDecimal > 0)
                 {
                     var aux = LblSaldo.Text;
                     LblSaldo.Text = aux.Remove(aux.Length - 1);
                     LblSaldo.ForeColor = SystemColors.ControlLightLight;
                 }
+                //
+                RadioNinguno.Enabled = true;
+                RadioNinguno.Checked = true;
+
             }
         }
 
@@ -884,8 +924,6 @@ namespace ViewStockNew.Views
             TxtDinero.Text = " ";
             TxtImporte.Text = " ";
             TxtVuelto.Text = " ";
-            //
-            RadioNinguno.Checked = true;
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -1375,8 +1413,70 @@ namespace ViewStockNew.Views
                 comprobantePagoViewReport.ShowDialog();
             }
             //
-            ClasesCompartidas.SaldoId = null;
+        }
+
+        private void AccountsView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnTerminarPago_Click(object sender, EventArgs e)
+        {
+            FillGrids();
+            GetAccountData();
+            //
+            LblSaldo.ForeColor = SystemColors.ControlLightLight;
+            //
+            BtnImprimir.Enabled = false;
+            BtnTerminarPago.Enabled = false;
+            //
+            RadioParcial.Enabled = true;
+            RadioTotal.Enabled = true;
+            RadioSaldo.Enabled = true;
+            RadioEspecífico.Enabled = true;
+            //
+            TxtDinero.ReadOnly = true;
+            //
+            TxtDinero.Text = " ";
+            TxtImporte.Text = " ";
+            TxtVuelto.Text = " ";
+            //
+            foreach (DataGridViewRow row in GridComprasDeudas.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                row.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+            }
+            //
+            foreach (DataGridViewRow row in GridProductosDeudas.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                row.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+            }
+            //
+            if (SaldoDecimal > 0)
+            {
+                var aux = LblSaldo.Text;
+                LblSaldo.Text = aux.Remove(aux.Length - 1);
+                LblSaldo.ForeColor = SystemColors.ControlLightLight;
+            }
+            //
+            RadioNinguno.Enabled = true;
+            RadioNinguno.Checked = true;
+            //
             ClasesCompartidas.PagoId = null;
+            ClasesCompartidas.SaldoId = null;
+        }
+
+        private void RadioNinguno_CheckedChanged(object sender, EventArgs e)
+        {
+            BtnCalcular.Enabled = false;
+            BtnCancelarPago.Enabled = false;
+            BtnGuardarPago.Enabled = false;
+            TxtDinero.ReadOnly = true;
+            //
+            TxtImporte.Text = " ";
+            TxtDinero.Text = " ";
+            TxtVuelto.Text = " ";
         }
     }
 }

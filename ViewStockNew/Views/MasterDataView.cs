@@ -2961,25 +2961,9 @@ namespace ViewStockNew.Views
             if (DataValue == "productos")
             {
                 #region ProductoDeshabilitar
-                Producto producto = new Producto()
-                {
-                    // Al modificar un producto, se le debe mantener su id
-                    Id = (int)idSeleccionado,
-                    TipoProductoId = (int)GridData.CurrentRow.Cells["TipoProductoId"].Value,
-                    MarcaId = (int)GridData.CurrentRow.Cells["MarcaId"].Value,
-                    SPECId = (int)GridData.CurrentRow.Cells["SPECId"].Value,
-                    ProveedorId = (int?)GridData.CurrentRow.Cells["ProveedorId"].Value,
-                    Detalles = (string)GridData.CurrentRow.Cells["Detalles"].Value,
-                    PrecioBulto = (decimal)GridData.CurrentRow.Cells["PrecioBulto"].Value,
-                    CantidadBulto = (int)GridData.CurrentRow.Cells["CantidadBulto"].Value,
-                    Ganancia = (int)GridData.CurrentRow.Cells["Ganancia"].Value,
-                    PVP = (decimal)GridData.CurrentRow.Cells["PVP"].Value,
-                    Stock = (int)GridData.CurrentRow.Cells["Stock"].Value,
-                    Modificacion = DateTime.Now,
-                    Visible = false,
-                    UsuarioId = ClasesCompartidas.UserId,
-                    Imagen = (byte[]?)GridData.CurrentRow.Cells["Imagen"].Value,
-                };
+                var producto = unitOfWork.ProductoRepository.GetByID(idSeleccionado);
+                producto.Visible = false;
+                producto.Modificacion = DateTime.Now;
                 try
                 {
                     new ModelsValidator().Validate(producto);

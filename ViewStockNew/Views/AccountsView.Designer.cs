@@ -128,10 +128,11 @@
             RadioEspecífico = new RadioButton();
             PctSubName = new PictureBox();
             RadioSaldo = new RadioButton();
-            RadioNinguno = new RadioButton();
             BtnCancelarPago = new FontAwesome.Sharp.IconButton();
             BtnFiltrar = new FontAwesome.Sharp.IconButton();
             BtnImprimir = new FontAwesome.Sharp.IconButton();
+            BtnTerminarPago = new FontAwesome.Sharp.IconButton();
+            RadioNinguno = new RadioButton();
             TabControl.SuspendLayout();
             TabPagePagadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridProductos).BeginInit();
@@ -1188,16 +1189,16 @@
             label1.ForeColor = Color.Gold;
             label1.Location = new Point(572, 46);
             label1.Name = "label1";
-            label1.Size = new Size(172, 22);
+            label1.Size = new Size(70, 22);
             label1.TabIndex = 292;
-            label1.Text = "Formas de pago";
+            label1.Text = "Pagos";
             // 
             // pictureBox7
             // 
             pictureBox7.Image = Properties.Resources.OrangeDivider;
             pictureBox7.Location = new Point(572, 71);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(169, 10);
+            pictureBox7.Size = new Size(129, 10);
             pictureBox7.TabIndex = 291;
             pictureBox7.TabStop = false;
             // 
@@ -1239,7 +1240,7 @@
             BtnGuardarPago.IconColor = Color.Black;
             BtnGuardarPago.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnGuardarPago.IconSize = 25;
-            BtnGuardarPago.Location = new Point(814, 58);
+            BtnGuardarPago.Location = new Point(771, 62);
             BtnGuardarPago.Name = "BtnGuardarPago";
             BtnGuardarPago.Size = new Size(26, 22);
             BtnGuardarPago.TabIndex = 312;
@@ -1332,7 +1333,7 @@
             BtnCalcular.IconColor = Color.Black;
             BtnCalcular.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnCalcular.IconSize = 23;
-            BtnCalcular.Location = new Point(782, 58);
+            BtnCalcular.Location = new Point(739, 62);
             BtnCalcular.Name = "BtnCalcular";
             BtnCalcular.Size = new Size(26, 22);
             BtnCalcular.TabIndex = 305;
@@ -1403,20 +1404,6 @@
             RadioSaldo.UseVisualStyleBackColor = true;
             RadioSaldo.CheckedChanged += RadioSaldo_CheckedChanged;
             // 
-            // RadioNinguno
-            // 
-            RadioNinguno.AutoSize = true;
-            RadioNinguno.Checked = true;
-            RadioNinguno.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            RadioNinguno.ForeColor = SystemColors.ControlLightLight;
-            RadioNinguno.Location = new Point(572, 100);
-            RadioNinguno.Name = "RadioNinguno";
-            RadioNinguno.Size = new Size(86, 21);
-            RadioNinguno.TabIndex = 319;
-            RadioNinguno.TabStop = true;
-            RadioNinguno.Text = "Ninguno";
-            RadioNinguno.UseVisualStyleBackColor = true;
-            // 
             // BtnCancelarPago
             // 
             BtnCancelarPago.BackColor = Color.Red;
@@ -1431,7 +1418,7 @@
             BtnCancelarPago.IconColor = Color.White;
             BtnCancelarPago.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnCancelarPago.IconSize = 23;
-            BtnCancelarPago.Location = new Point(750, 58);
+            BtnCancelarPago.Location = new Point(707, 62);
             BtnCancelarPago.Name = "BtnCancelarPago";
             BtnCancelarPago.Size = new Size(26, 22);
             BtnCancelarPago.TabIndex = 320;
@@ -1462,6 +1449,7 @@
             // 
             BtnImprimir.BackColor = Color.DarkOrange;
             BtnImprimir.Cursor = Cursors.Hand;
+            BtnImprimir.Enabled = false;
             BtnImprimir.FlatAppearance.BorderSize = 0;
             BtnImprimir.FlatAppearance.MouseDownBackColor = Color.Goldenrod;
             BtnImprimir.FlatAppearance.MouseOverBackColor = Color.Gold;
@@ -1471,12 +1459,48 @@
             BtnImprimir.IconColor = Color.Black;
             BtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnImprimir.IconSize = 23;
-            BtnImprimir.Location = new Point(846, 58);
+            BtnImprimir.Location = new Point(803, 62);
             BtnImprimir.Name = "BtnImprimir";
             BtnImprimir.Size = new Size(26, 22);
             BtnImprimir.TabIndex = 322;
             BtnImprimir.UseVisualStyleBackColor = false;
             BtnImprimir.Click += BtnImprimir_Click;
+            // 
+            // BtnTerminarPago
+            // 
+            BtnTerminarPago.BackColor = Color.DarkViolet;
+            BtnTerminarPago.Cursor = Cursors.Hand;
+            BtnTerminarPago.Enabled = false;
+            BtnTerminarPago.FlatAppearance.BorderSize = 0;
+            BtnTerminarPago.FlatAppearance.MouseDownBackColor = Color.Indigo;
+            BtnTerminarPago.FlatAppearance.MouseOverBackColor = Color.MediumPurple;
+            BtnTerminarPago.FlatStyle = FlatStyle.Flat;
+            BtnTerminarPago.ForeColor = SystemColors.ActiveCaptionText;
+            BtnTerminarPago.IconChar = FontAwesome.Sharp.IconChar.Check;
+            BtnTerminarPago.IconColor = Color.White;
+            BtnTerminarPago.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnTerminarPago.IconSize = 23;
+            BtnTerminarPago.Location = new Point(835, 62);
+            BtnTerminarPago.Name = "BtnTerminarPago";
+            BtnTerminarPago.Size = new Size(26, 22);
+            BtnTerminarPago.TabIndex = 323;
+            BtnTerminarPago.UseVisualStyleBackColor = false;
+            BtnTerminarPago.Click += BtnTerminarPago_Click;
+            // 
+            // RadioNinguno
+            // 
+            RadioNinguno.AutoSize = true;
+            RadioNinguno.Checked = true;
+            RadioNinguno.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            RadioNinguno.ForeColor = SystemColors.ControlLightLight;
+            RadioNinguno.Location = new Point(572, 100);
+            RadioNinguno.Name = "RadioNinguno";
+            RadioNinguno.Size = new Size(86, 21);
+            RadioNinguno.TabIndex = 324;
+            RadioNinguno.TabStop = true;
+            RadioNinguno.Text = "Ninguno";
+            RadioNinguno.UseVisualStyleBackColor = true;
+            RadioNinguno.CheckedChanged += RadioNinguno_CheckedChanged;
             // 
             // AccountsView
             // 
@@ -1484,10 +1508,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 38, 38);
             ClientSize = new Size(1360, 745);
+            Controls.Add(RadioNinguno);
+            Controls.Add(BtnTerminarPago);
             Controls.Add(BtnImprimir);
             Controls.Add(BtnFiltrar);
             Controls.Add(BtnCancelarPago);
-            Controls.Add(RadioNinguno);
             Controls.Add(RadioSaldo);
             Controls.Add(PctSubName);
             Controls.Add(RadioEspecífico);
@@ -1539,6 +1564,7 @@
             Name = "AccountsView";
             Text = "Cuentas";
             WindowState = FormWindowState.Maximized;
+            Load += AccountsView_Load;
             TabControl.ResumeLayout(false);
             TabPagePagadas.ResumeLayout(false);
             TabPagePagadas.PerformLayout();
@@ -1651,7 +1677,6 @@
         private DataGridView GridProductosDeudas;
         private DataGridView GridComprasDeudas;
         private RadioButton RadioSaldo;
-        private RadioButton RadioNinguno;
         private FontAwesome.Sharp.IconButton BtnCancelarPago;
         private FontAwesome.Sharp.IconButton AplicarFiltroProductosDeuda;
         private FontAwesome.Sharp.IconButton BtnFiltrar;
@@ -1660,5 +1685,7 @@
         private TabPage TabPagePagos;
         private DataGridView GridPagos;
         private FontAwesome.Sharp.IconButton BtnImprimir;
+        private FontAwesome.Sharp.IconButton BtnTerminarPago;
+        private RadioButton RadioNinguno;
     }
 }

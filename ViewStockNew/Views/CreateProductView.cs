@@ -1033,10 +1033,10 @@ namespace ViewStockNew.Views
             }
             else
             {
-                decimal unidad = Convert.ToDecimal(TxtPrecioUnidad.Text);
+                decimal pvp = Convert.ToDecimal(TxtPrecioVenta.Text);
                 int cantidad = Convert.ToInt32(TxtCantidad.Text);
                 decimal descuento = Convert.ToDecimal(TxtDescuento.Text);
-                decimal bulto = cantidad * unidad;
+                decimal bulto = cantidad * pvp;
                 //
                 decimal precioPVPbulto = bulto - ((bulto * descuento) / 100);
                 TxtPrecioBulto.Text = precioPVPbulto.ToString("0.00");
